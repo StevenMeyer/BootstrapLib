@@ -1,1 +1,333 @@
-﻿My GitHub Page
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="#">BootstrapLib</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="#base-css">Base CSS</a></li>
+                            <li><a href="#">Components</a></li>
+                            <li><a href="#">JavaScript</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <div class="hero-unit">
+                <h1>BootstrapLib</h1>
+                <p>A jQuery-compatible, JavaScript object library for Twitter Bootstrap</p>
+                <div class="btn-toolbar">
+                    <div class="btn-group">
+                        <a href="https://github.com/FartlekUK/BootstrapLib/zipball/master" class="btn btn-large btn-primary">Download ZIP</a>
+                        <a href="https://github.com/FartlekUK/BootstrapLib/tarball/master" class="btn btn-large btn-primary">Download TGZ</a>
+                    </div>
+                    <div class="btn-group">
+                        <a href="https://github.com/FartlekUK/BootstrapLib" class="btn btn-large btn-info">View on GitHub</a>
+                    </div>
+                </div>
+            </div>
+            
+            <section id="base-css" class="page">
+                <header>
+                    <h1>Base CSS</h1>
+                    <p class="lead">Fundamental HTML elements styled and enhanced with extensible classes.</p>
+                </header>
+                
+                <ol>
+                    <li><a href="#base-css-code">Code</a></li>
+                </ol>
+            
+                <section id="base-css-code" class="component">
+                    <header class="page-header">
+                        <h1>Code</h1>
+                        <p class="lead">Stylised snippets of code.</p>
+                    </header>
+                    <p>Content added to this object will be printed with all mark-up as text. Use <code>.html()</code> or the special HTML functions to add mark-up.</p>
+                    <div class="bs-docs-example">
+                        An in-line code element, <code>&lt;code&gt;&lt;/code&gt;</code>, and a block-level element: <pre>&lt;pre&gt;&lt;/pre&gt;</pre>
+                    </div>
+                    <ol>
+                        <li><a href="#base-css-creation">Creation</a></li>
+                        <li><a href="#base-css-methods">Methods</a></li>
+                    </ol>
+                    <section id="base-css-creation" class="creation">
+                        <header>
+                            <h2>Creation</h2>
+                        </header>
+                        <div class="method">
+                            <h3>constructor() <small>Return type: Code</small></h3>
+                            <p>Create a new, empty Code object.</p>
+                            <pre>new uk.co.stevenmeyer.Bootstrap.Css.Code( block );</pre>
+                            <div class="params">
+                                <h4>Parameters</h4>
+                                <dl class="dl-horizontal">
+                                    <dt>block</dt>
+                                    <dd><p class="param-type">Boolean</p><p>If this evaluates to <code>true</code>, the element will be a block-level &lt;pre&gt;, otherwise it will be an inline &lt;code&gt;.</p></dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="method">
+                            <h3>Code.decorate() <small>Return type: Code</small></h3>
+                            <p>Add Code functionality to an existing object.</p>
+                            <pre>uk.co.stevenmeyer.Bootstrap.Css.Code.decorate( object );</pre>
+                            <div class="params">
+                                <h4>Parameters</h4>
+                                <dl class="dl-horizontal">
+                                    <dt>object</dt>
+                                    <dd><p class="param-type">Object</p><p>This object will be decorated as a Code object.</p></dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="base-css-methods" class="methods">
+                        <header>
+                            <h2>Methods</h2>
+                        </header>
+                        <ol>
+                            <li><a href="#base-css-code-append">append()</a></li>
+                            <li><a href="#base-css-code-appendhtml">appendHtml()</a></li>
+                            <li><a href="#base-css-code-isblock">isBlock()</a></li>
+                            <li><a href="#base-css-code-isinline">isInline()</a></li>
+                            <li><a href="#base-css-code-prepend">prepend()</a></li>
+                            <li><a href="#base-css-code-prependhtml">prependHtml()</a></li>
+                            <li><a href="#base-css-code-scrollable">scrollable()</a></li>
+                            <li><a href="#base-css-code-tostring">toString()</a></li>
+                        </ol>
+                        <div id="base-css-code-append" class="method">
+                            <h3>.append() <small>Return type: Code</small></h3>
+                            <p>Insert content to the end of the element. All mark-up will be displayed as text.</p>
+                            <pre>append( content [, moreContent] )</pre>
+                            <div class="params">
+                                <h4>Parameters</h4>
+                                <dl class="dl-horizontal">
+                                    <dt>content</dt>
+                                    <dd><p class="param-type">htmlString / Element / jQuery / function( index, html )</p><p>DOM element, HTML string or jQuery object to insert at the end of the element. The parameter may be a function which returns any of these objects. The function receives the index 0 (zero) and the old HTML value of the element as arguments. Within the function, <code>this</code> refers to the Code object.</p></dd>
+                                    <dt>moreContent</dt>
+                                    <dd><p class="param-type">htmlString / Element / Array / jQuery / function( index, html )</p><p>One or more additional DOM elements, arrays of elements, HTML strings, jQuery objects or functions which return one or more of these objects to insert at the end of the element.</p></dd>
+                                    <dt class="method-return">Return</dt>
+                                    <dd><p class="param-type">Code</p></dd>
+                                </dl>
+                            </div>
+                            <div class="example">
+                                <h4>Example</h4>
+                                <div class="bs-docs-example">
+                                    <pre><p>Hello, world!</p>&lt;em&gt;My HTML, &lt;strong&gt;exposed!&lt;/strong&gt;&lt;/em&gt;</pre>
+                                </div>
+                                <pre class="prettyprint"><ol><li>var example = uk.co.stevenmeyer.Bootstrap.Css.Code.decorate( $( "&lt;pre&gt;&lt;p&gt;Hello, world!&lt;/p&gt;&lt;/pre&gt;" ) );</li><li>example.append( $( "&lt;em&gt;My HTML, &lt;strong&gt;exposed!&lt;/strong&gt;&lt;/em&gt; ) );</li></ol></pre>
+                                <p>jQuery objects are cloned before they are used, so the original object will not be affected.</p>
+                            </div>
+                        </div>
+
+                        <div id="base-css-code-appendhtml" class="method">
+                            <h3>.appendHtml() <small>Return type: Code</small></h3>
+                            <p>Insert content to the end of the element. This function is equivalent to the original jQuery <code>append()</code> function.</p>
+                            <pre>appendHtml( content [, moreContent] )</pre>
+                            <div class="params">
+                                <h4>Parameters</h4>
+                                <dl class="dl-horizontal">
+                                    <dt>content</dt>
+                                    <dd><p class="param-type">htmlString / Element / jQuery</p><p>DOM element, HTML string or jQuery object to insert at the end of the element.</p></dd>
+                                    <dt>moreContent</dt>
+                                    <dd><p class="param-type">htmlString / Element / Array / jQuery</p><p>One or more additional DOM elements, arrays of elements, HTML strings or jQuery objects to insert at the end of the element.</p></dd>
+                                    <dt class="method-return">Return</dt>
+                                    <dd><p class="param-type">Code</p></dd>
+                                </dl>
+                            </div>
+                            <div class="example">
+                                <h4>Example</h4>
+                                <div class="bs-docs-example">
+                                    <pre><p>Hello, world!</p><p>My HTML is <strong>not</strong> exposed.</p></pre>
+                                </div>
+                                <pre class="prettyprint"><ol><li>var example = uk.co.stevenmeyer.Bootstrap.Css.Code.decorate( $( "&lt;pre&gt;&lt;p&gt;Hello, world!&lt;/p&gt;&lt;/pre&gt;" ) );</li><li>example.appendHtml( $( "&lt;p&gt;My HTML is &lt;strong>not&lt;/strong&gt; exposed.&lt;/p&gt;" ) )</li></ol></pre>
+                            </div>
+                        </div>
+                        
+                        <div id="base-css-code-isblock" class="method">
+                            <h3>.isBlock() <small>Return type: Boolean</small></h3>
+                            <p>Returns <code>true</code> if the element is a <code>&lt;pre&gt;</code> element.</p>
+                            <pre>isBlock()</pre>
+                            <div class="params">
+                                <h4>Parameters</h4>
+                                <dl class="dl-horizontal">
+                                    <dt>Return</dt>
+                                    <dd><p class="param-type">Boolean</p><code>True</code> if the element is a block code element.</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        
+                        <div id="base-css-code-isinline" class="method">
+                            <h3>.isInline() <small>Return type: Boolean</small></h3>
+                            <p>Returns <code>true</code> if the element is a <code>&lt;code&gt;</code> element.</p>
+                            <pre>isInline()</pre>
+                            <div class="params">
+                                <h4>Parameters</h4>
+                                <dl class="dl-horizontal">
+                                    <dt>Return</dt>
+                                    <dd><p class="param-type">Boolean</p><p><code>True</code> if the element is an inline code element.</p></dd>
+                                </dl>
+                            </div>
+                        </div>
+                        
+                        <div id="base-css-code-prepend" class="method">
+                            <h3>.prepend() <small>Return type: Code</small></h3>
+                            <p>Insert content at the beginning of the element. All mark-up will be displayed as text.</p>
+                            <pre>prepend( content [, moreContent] )</pre>
+                            <div class="params">
+                                <h4>Parameters</h4>
+                                <dl class="dl-horizontal">
+                                    <dt>content</dt>
+                                    <dd><p class="param-type">htmlString / Element / jQuery / function( index, html )</p><p>DOM element, HTML string or jQuery object to insert at the beginning of the element. The parameter may be a function which returns any of these objects. The function receives the index 0 (zero) and the old HTML value of the element as arguments. Within the function, <code>this</code> refers to the Code object.</p></dd>
+                                    <dt>moreContent</dt>
+                                    <dd><p class="param-type">htmlString / Element / Array / jQuery / function( index, html )</p><p>One or more additional DOM elements, arrays of elements, HTML strings, jQuery objects or functions which return one or more of these objects to insert at the beginning of the element.</p></dd>
+                                    <dt class="method-return">Return</dt>
+                                    <dd><p class="param-type">Code</p></dd>
+                                </dl>
+                            </div>
+                            <div class="example">
+                                <h4>Example</h4>
+                                <div class="bs-docs-example">
+                                    <pre>&lt;p&gt;Hello, Aberystwyth!&lt;p&gt;<p>Hello, world!</p></pre>
+                                </div>
+                                <pre class="prettyprint"><ol><li>var example = uk.co.stevenmeyer.Bootstrap.Css.Code.decorate( $( "&lt;pre&gt;&lt;p&gt;Hello, world!&lt;/p&gt;&lt;/pre&gt;" ) );</li><li>example.prepend( $( "&lt;p&gt;Hello, Aberystwyth!&lt;/p&gt;" ) );</li></ol></pre>
+                                <p>jQuery objects are cloned before they are used, so the original object will not be affected.</p>
+                            </div>
+                        </div>
+
+                        <div id="base-css-code-prependhtml" class="method">
+                            <h3>.prependHtml() <small>Return type: Code</small></h3>
+                            <p>Insert content at the beginning of the element. This function is equivalent to the original jQuery <code>prepend()</code> function.</p>
+                            <pre>prependHtml( content [, moreContent] )</pre>
+                            <div class="params">
+                                <h4>Parameters</h4>
+                                <dl class="dl-horizontal">
+                                    <dt>content</dt>
+                                    <dd><p class="param-type">htmlString / Element / jQuery</p><p>DOM element, HTML string or jQuery object to insert at the beginning of the element.</p></dd>
+                                    <dt>moreContent</dt>
+                                    <dd><p class="param-type">htmlString / Element / Array / jQuery</p><p>One or more additional DOM elements, arrays of elements, HTML strings or jQuery objects to insert at the beginning of the element.</p></dd>
+                                    <dt class="method-return">Return</dt>
+                                    <dd><p class="param-type">Code</p></dd>
+                                </dl>
+                            </div>
+                            <div class="example">
+                                <h4>Example</h4>
+                                <div class="bs-docs-example">
+                                    <pre><p>Hello, Aberystwyth!</p><p>Hello, world!</p></pre>
+                                </div>
+                                <pre class="prettyprint"><ol><li>var example = uk.co.stevenmeyer.Bootstrap.Css.Code.decorate( $( "&lt;pre&gt;&lt;p&gt;Hello, world!&lt;/p&gt;&lt;/pre&gt;" ) );</li><li>example.prependHtml( $( "&lt;p&gt;Hello, Aberystwyth!&lt;/p&gt;" ) )</li></ol></pre>
+                            </div>
+                        </div>
+                        
+                        <div id="base-css-code-scrollable" class="method">
+                            <h3>.scrollable() <small>Return type: Code</small></h3>
+                            <p>Adds the <code>.pre-scrollable</code> class to block code elements. This will set a max-height of 350px and provide a y-axis scrollbar.</p>
+                            <pre>scrollable()</pre>
+                            <div class="params">
+                                <h4>Parameters</h4>
+                                <dl class="dl-horizontal">
+                                    <dt>Return</dt>
+                                    <dd><p class="param-type">Code</p></dd>
+                                </dl>
+                            </div>
+                            <div class="example">
+                                <h4>Example</h4>
+                                <div class="bs-docs-example">
+                                    <pre class="pre-scrollable">Sirloin commodo pork sed jowl dolor shoulder qui officia eiusmod reprehenderit dolore, chicken cillum cupidatat. Nisi capicola consectetur chuck, reprehenderit strip steak frankfurter exercitation occaecat kielbasa culpa incididunt tempor meatloaf. Deserunt biltong turducken elit leberkas in ex, reprehenderit sed short loin chuck do irure tenderloin. Velit commodo swine in cillum. Salami laborum dolore, drumstick id eu in pancetta ex esse cupidatat ham hock turducken. Minim hamburger flank venison consequat, occaecat bacon jerky chicken nulla ground round excepteur incididunt.
+
+Labore consequat t-bone swine cow filet mignon nulla corned beef ut. Ad ex beef elit veniam pork loin. Pastrami dolore filet mignon brisket, pariatur eu aliqua do deserunt ground round ad labore. Capicola eu cow brisket, enim meatloaf drumstick id in. Aliquip pork loin pork belly prosciutto turkey. Turkey flank ground round dolor hamburger labore consequat cow swine proident rump chicken. Ad turducken beef ribs, magna eu aute drumstick andouille ullamco.
+
+Andouille incididunt veniam pork belly rump. Occaecat consectetur sunt sint proident ground round frankfurter sed fugiat velit exercitation excepteur prosciutto est. Ribeye tongue nisi boudin incididunt rump andouille aute turducken mollit. Nostrud ham commodo sunt anim. Nisi ex ham hock, flank salami deserunt duis.
+
+Reprehenderit eu sausage, sed pork chop shank chuck frankfurter minim proident cillum cow rump ullamco. Dolor filet mignon rump, ex tongue flank est andouille pancetta cow ball tip sausage qui aliqua swine. Swine sed pork belly aute bacon leberkas ground round pariatur sint excepteur bresaola. Dolore ground round sint est aliqua bresaola filet mignon jowl tail irure meatloaf leberkas pancetta. Jowl quis pork chop incididunt. Filet mignon non ut tri-tip andouille ham in dolore tenderloin officia quis. In sed pork loin, sirloin ex in dolore ball tip turkey tenderloin.
+
+Excepteur ut turducken commodo laborum, culpa boudin bacon mollit pancetta deserunt filet mignon strip steak short ribs chuck. Magna pork chop esse, dolor enim tempor qui corned beef venison in. Spare ribs exercitation corned beef strip steak cow, beef ribs rump biltong culpa. Adipisicing tri-tip chuck, fatback sint deserunt pork short loin sausage rump pig strip steak elit do. Proident enim velit mollit.
+
+Bacon short ribs pancetta andouille. Mollit elit tail esse, ut culpa strip steak cow ham. Rump reprehenderit voluptate, doner ea velit cow elit spare ribs do consequat. Beef ribs spare ribs occaecat sunt aliquip, frankfurter esse veniam est shank sirloin.
+
+Consectetur eu turkey, ham hock prosciutto quis irure in tail pastrami ut short loin. Ea nostrud magna, elit nulla excepteur frankfurter bresaola veniam pastrami eu voluptate. Veniam pork chop ullamco ham hock. Sed et pariatur mollit minim. Mollit pork meatloaf ut frankfurter enim. Nulla pork belly sed venison laboris pariatur fugiat prosciutto anim. Nulla sint exercitation bresaola est irure, short ribs tri-tip dolore reprehenderit swine shoulder venison beef ribs ullamco.
+
+Excepteur short loin ut tail. Est pork loin cillum, in capicola dolor voluptate occaecat officia. In cillum frankfurter meatball pariatur dolor ut prosciutto proident nulla boudin chuck fatback brisket salami. Tongue aute beef ham hock consequat bresaola in pastrami reprehenderit drumstick. Shoulder id rump dolor.</pre>
+                                </div>
+                                <pre class="prettyprint"><ol><li>var example = new uk.co.stevenmeyer.Bootstrap.Css.Code();</li><li>example.scrollable().append( "Sirloin commodo pork sed ..." )</li></ol></pre>
+                            </div>
+                        </div>
+                        
+                        <div id="base-css-code-tostring" class="method">
+                            <h3>.toString() <small>Return type: String</small></h3>
+                            <p>Gets the HTML for the object, including its tags. This is similar to calling <code>.get(0).outerHTML</code>, but without relying on outerHTML support.</p>
+                            <pre>toString()</pre>
+                            <div class="params">
+                                <h4>Parameters</h4>
+                                <dl class="dl-horizontal">
+                                    <dt>Return</dt>
+                                    <dd><p class="param-type">String</p><p>The mark-up of the element in its entirety, including its <code>&lt;code&gt;</code> or <code>&lt;pre&gt;</code> tag.</p></dd>
+                                </dl>
+                            </div>
+                            <div class="example">
+                                <h4>Example</h4>
+                                <div class="bs-docs-example">&lt;code&gt;Hello, world!&lt;/code&gt;</div>
+                                <pre class="prettyprint"><ol><li>var example = new uk.co.stevenmeyer.Bootstrap.Css.Code();</li><li>example.append( "Hello, world!" ).toString()</li></ol></pre>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </section>
+
+            <hr>
+
+            <footer>
+                <p>&copy; Steven Meyer 2013</p>
+            </footer>
+
+        </div> <!-- /container -->
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-40498836-1', 'github.io');
+          ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>
