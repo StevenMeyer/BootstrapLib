@@ -6,33 +6,40 @@
 /* Bootstrap code examples
 -------------------------------------------------- */
 
+section.page {
+    padding-top: 60px;
+}
+
 section.page > header {
-    background-color: #1b1b1b;
+    background-color: #020031;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 );
+    background: linear-gradient(45deg, #020031 0%,#6d3353 100%);
     border-radius: 4px;
-    color: #f5f5f5;
+    color: #ffffff;
     margin-bottom: 20px;
     padding: 5px;
     padding-left: 60px;
+}
+
+section.component, section.creation, section.methods, div.method {
+    padding-top: 40px;
 }
 
 section.component > header.page-header > *:first-child {
     color: #5a5a5a;
 }
 
-section.component > section {
-    margin-bottom: 20px;
-    margin-top: 20px;
-    padding-top: 10px;
-}
-
 section.component > section.methods > ol li a {
     font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+}
+
+section.methods div.target {
+    padding-top: 40px;
 }
 
 section.component div.method {
     border: 1px solid #dddddd;
     border-radius: 4px;
-    margin-bottom: 10px;
     margin-top: 15px;
     padding: 20px;
     padding-bottom: 10px;
@@ -42,13 +49,17 @@ section.component div.method > *:first-child {
     background-color: #1b1b1b;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    color: #f5f5f5;
+    background-color: #020031;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 );
+    background: linear-gradient(45deg, #020031 0%,#6d3353 100%);
+    color: #ffffff;
     margin: -21px;
     margin-bottom: 15px;
     padding-left: 20px;
 }
 
 section.component div.method > *:first-child small {
+    color: #f5f5f5;
     float: right;
     padding: 13px;
 }
