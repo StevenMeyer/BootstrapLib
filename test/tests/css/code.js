@@ -28,7 +28,7 @@
         code.empty().append(htmlString, element, jQueryObj); //bunch o' stuff
         equal(code.text(), htmlString + htmlString + htmlString, "Adding a list of arguments should add all of the parts with escaped HTML");
 
-        code.empty().append(function() { return [htmlString, element, jQueryObj]}); //function
+        code.empty().append(function() { return [htmlString, element, jQueryObj]; }); //function
         equal(code.text(), htmlString + htmlString + htmlString, "Adding a function should add all of the parts with escaped HTML");
     });
 
@@ -55,7 +55,7 @@
         code.empty().prepend(htmlString, element, jQueryObj); //bunch o' stuff
         equal(code.text(), htmlString + htmlString + htmlString, "Adding a list of arguments should add all of the parts with escaped HTML");
 
-        code.empty().prepend(function() { return [htmlString, element, jQueryObj]}); //function
+        code.empty().prepend(function() { return [htmlString, element, jQueryObj]; }); //function
         equal(code.text(), htmlString + htmlString + htmlString, "Adding a function should add all of the parts with escaped HTML");
     });
 
@@ -76,6 +76,6 @@
         var code = Code.decorate($("<code>"));
 
         ok(code instanceof jQuery, "Code should be a jQuery instance");
-        ok(code instanceof Code, "Code should be a Code instance")
+        ok(code instanceof Code, "Code should be a Code instance");
     });
 })(uk.co.stevenmeyer.Bootstrap.Css.Code, "Css.Code");
