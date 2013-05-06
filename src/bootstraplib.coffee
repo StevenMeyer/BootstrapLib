@@ -32,6 +32,19 @@ namespace( '', namespace: namespace )
 $ = jQuery
 baseNamespace = "uk.co.stevenmeyer.Bootstrap"
 baseClass = class (namespace baseNamespace).Bootstrap extends $
+  @decorate: () ->
+    if arguments[0]?
+      if arguments[1]?
+        $item = if arguments[0] instanceof Object then arguments[0] else $ arguments[0]
+        $.extend arguments[1], $item
+        arguments[1]
+      else
+        arguments[0]
+    else
+      throw "Nothing to decorate"
+  
+  toString:() ->
+    $("<p>").append(@clone()).html()
 
 isDOMNode = (node) ->
   if typeof Node is "object"
@@ -39,11 +52,72 @@ isDOMNode = (node) ->
   else
     node? and typeof node is "object" and typeof node.nodeType is "number" and typeof node.nodeName is "string"
     
-appendFn = (element) ->
-  @appendChild element if @nodeType is 1 or @nodeType is 11 or @nodeType is 9
+class (namespace "#{baseNamespace}.Css").Button extends baseClass
+  constructor: (tagname = "button") ->
+    Button.decorate $("<#{tagname}>"), this
+    
+  block: () -> @addClass "btn btn-block"
+    
+  danger: () -> @emphasize "danger"
   
-prependFn = (element) ->
-  @insertBefore(element, this) is @nodeType is 1 or @nodeType is 11 or @nodeType is 9
+  @decorate: ($item, $with = new Button()) ->
+    super $item, $with
+    
+    $with.addClass "btn"
+    #$with.attr "type", "button" if not $with.attr("type")? and ($with.is("button") or $with.is("input"))
+    $with.size = () -> Button.prototype.size.apply this, arguments
+    $with.map () ->
+      $this = $ this
+      $this.attr "type", "button" if not $this.attr("type")? and ($this.is("button") or $this.is("input"))
+    $with
+    
+  defaultSize: () -> @size ""
+    
+  defaultStyle: () -> @emphasize ""
+  
+  disable: () ->
+    @addClass "btn disabled"
+    @map () ->
+      $this = $ this
+      $this.attr "disabled", "disabled" if $this.is("button") or $this.is("input")
+    this
+  
+  emphasize: (emphasis = "") ->
+    classes = ["btn-primary", "btn-info", "btn-success", "btn-warning", "btn-danger", "btn-inverse", "btn-link"]
+    exclusiveStyle.call this, emphasis, classes
+    
+  enable: () ->
+    @addClass("btn").removeClass("disabled").removeAttr("disabled")
+    
+  exclusiveStyle = (style = "", classes) ->
+    @addClass("btn").removeClass classes.join " "
+    style = "btn-#{style}"
+    if style in classes then @addClass style else this
+  
+  info: () -> @emphasize "info"
+  
+  inverse: () -> @emphasize "inverse"
+  
+  large: () -> @size "large"
+  
+  link: () -> @emphasize "link"
+  
+  mini: () -> @size "mini"
+  
+  primary: () -> @emphasize "primary"
+  
+  size: () ->
+    if arguments[0]?
+      classes = ["btn-large", "btn-small", "btn-mini"]
+      exclusiveStyle.call this, arguments[0], classes
+    else
+      @length # original, deprecated jQuery size() function
+      
+  small: () -> @size "small"
+  
+  success: () -> @emphasize "success"
+  
+  warning: () -> @emphasize "warning"
 
 class (namespace "#{baseNamespace}.Css").Code extends baseClass
   constructor: (block) ->
@@ -71,15 +145,15 @@ class (namespace "#{baseNamespace}.Css").Code extends baseClass
     $.fn.append.apply this, arguments
   
   @decorate: ($item, $with = new Code()) ->
-    if $item not instanceof Object then $item = $ $item
-    $.extend $with, $item
+    $with = super $item, $with
+    
     $with.append = () -> Code.prototype.append.apply this, arguments
     $with.prepend = () -> Code.prototype.prepend.apply this, arguments
     $with
     
-  isBlock: () -> this.is "pre"
+  isBlock: () -> @is "pre"
   
-  isInline: () -> this.is "block"
+  isInline: () -> @is "block"
     
   prepend: () ->
     for arg of arguments
@@ -103,6 +177,3 @@ class (namespace "#{baseNamespace}.Css").Code extends baseClass
     
   scrollable: () ->
     @addClass "pre-scrollable" if @isBlock()
-    
-  toString:() ->
-    $("<p>").append(@clone()).html()
