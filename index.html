@@ -76,15 +76,35 @@
                         <h1>Code</h1>
                         <p class="lead">Stylised snippets of code.</p>
                     </header>
-                    <p>Content added to this object will be printed with all mark-up as text. Use <code>.html()</code> or the special HTML functions to add mark-up.</p>
+                    <h2>What's New?</h2>
+                    <p>These <code>code</code> and <code>pre</code> elements are for showing code. Using <a href="base-css-code-append">.append()</a> or <a href="base-css-code-prepend">.prepend()</a> will add the HTML as plaintext.</p>
+                    <p>Use <a href="http://api.jquery.com/html/">.html()</a>, <a href="#base-css-code-appendhtml">appendHtml()</a> or <a href="#base-css-code-prependhtml">.prependHtml()</a> to add mark-up.</p>
+                    <h2>Inline</h2>
+                    <p>Wrap snippets of code with <code>&lt;code&gt;</code>.</p>
                     <div class="bs-docs-example">
-                        An in-line code element, <code>&lt;code&gt;&lt;/code&gt;</code>, and a block-level element: <pre>&lt;pre&gt;&lt;/pre&gt;</pre>
+                        HTML5 documents always start with <code>&lt;!DOCTYPE html&gt;</code>.
                     </div>
-                    <ol>
-                        <li><a href="#base-css-creation">Creation</a></li>
-                        <li><a href="#base-css-methods">Methods</a></li>
-                    </ol>
-                    <section id="base-css-creation" class="creation">
+                    <pre class="prettyprint"><ol><li>HTML5 documents always start with &lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/code&gt;</li></ol></pre>
+                    <p>
+                        The <code>&lt;code&gt;</code> element can be created by using <code><a href="#base-css-code-creation">new Code()</a></code> or <code><a href="#base-css-code-creation">Code.decorate( $("&lt;code&gt;") )</a></code>
+                    </p>
+                    <h2>Basic Block</h2>
+                    <p>Use <code>&lt;pre&gt;</code> for multiple lines of code.</p>
+                    <div class="bs-docs-example">
+                        <pre>
+&lt;script type="text/javascript" src="js/jquery.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;&lt;!--
+    var Code, code;
+    Code = uk.co.stevenmeyer.Bootstrap.Css.Code;
+    code = new Code(true);
+--&gt;&lt;/script&gt;
+                        </pre>
+                    </div>
+                    <pre class="prettyprint"><ol><li>&lt;pre&gt;</li><li>&amp;lt;script type="text/javascript" src="js/jquery.js"&amp;gt;&amp;lt;/script&amp;gt;</li><li>&amp;lt;script type="text/javascript"&amp;gt;&amp;lt;!--</li><li>    var Code, code;</li><li>    Code = uk.co.stevenmeyer.Bootstrap.Css.Code;</li><li>    code = new Code(true);</li><li>--&amp;gt;&amp;lt;/script&amp;gt;</li><li>&lt;/pre&gt;</li></ol></pre>
+                    <p>
+                        The <code>pre</code> element can be created by using <code><a href="#base-css-code-creation">new Code(block = true)</a></code> or <code><a href="#base-css-code-creation">Code.decorate( $("&lt;pre&gt;") )</a></code>
+                    </p>
+                    <section id="base-css-code-creation" class="creation">
                         <header>
                             <h2>Creation</h2>
                         </header>
@@ -113,7 +133,7 @@
                             </div>
                         </div>
                     </section>
-                    <section id="base-css-methods" class="methods">
+                    <section id="base-css-code-methods" class="methods">
                         <header>
                             <h2>Methods</h2>
                         </header>
