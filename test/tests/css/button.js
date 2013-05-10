@@ -54,7 +54,7 @@
     test(set + ": Test disabling", function() {
         var button;
         
-        button = new Button.decorate($("<button>").add($("<input>")).add($("<a>")));
+        button = Button.decorate($("<button>").add($("<input>")).add($("<a>")));
         
         // not using .hasClass() because we need to check that the other classes have gone away.
         ok(button.attr("class") === "btn" && button.attr("disabled") !== "disabled", "Default class should be btn");
@@ -67,5 +67,16 @@
         }).length, 2, "Only <button> and <input> elements should have the 'disabled' attribute");
         button.enable();
         ok(button.attr("class") === "btn" && button.attr("disabled") !== "disabled", "After enabling the button, the class and attribute should have been removed");
+    });
+    
+    test(set + ": Test setting text", function() {
+        var buttons = Button.decorate($("<button>").add($("<input type='button'>")).add($("<a>"))),
+            text = "Foo";
+        
+        buttons.text(text);
+        equal(buttons.eq(0).text(), text, "Button element text should be set with .text()");
+        equal(buttons.eq(1).text(), "", "Input element should not have text set with .text()");
+        equal(buttons.eq(1).attr("value"), text, "Input element should have value set with .text()");
+        equal(buttons.eq(2).text(), text, "Link element text should be set with .text()");
     });
 })(uk.co.stevenmeyer.Bootstrap.Css.Button, "Css.Button");

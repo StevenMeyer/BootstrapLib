@@ -108,6 +108,9 @@
       $with.size = function() {
         return Button.prototype.size.apply(this, arguments);
       };
+      $with.text = function() {
+        return Button.prototype.text.apply(this, arguments);
+      };
       $with.map(function() {
         var $this;
         $this = $(this);
@@ -204,6 +207,18 @@
 
     Button.prototype.success = function() {
       return this.emphasize("success");
+    };
+
+    Button.prototype.text = function(text) {
+      return this.map(function() {
+        var $this;
+        $this = $(this);
+        if ($this.is("input")) {
+          return $this.attr("value", text);
+        } else {
+          return $.fn.text.call($this, text);
+        }
+      });
     };
 
     Button.prototype.warning = function() {

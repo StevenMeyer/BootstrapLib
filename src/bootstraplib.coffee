@@ -66,6 +66,7 @@ class (namespace "#{baseNamespace}.Css").Button extends baseClass
     $with.addClass "btn"
     #$with.attr "type", "button" if not $with.attr("type")? and ($with.is("button") or $with.is("input"))
     $with.size = () -> Button.prototype.size.apply this, arguments
+    $with.text = () -> Button.prototype.text.apply this, arguments
     $with.map () ->
       $this = $ this
       $this.attr "type", "button" if not $this.attr("type")? and ($this.is("button") or $this.is("input"))
@@ -116,6 +117,14 @@ class (namespace "#{baseNamespace}.Css").Button extends baseClass
   small: () -> @size "small"
   
   success: () -> @emphasize "success"
+  
+  text: (text) ->
+    @map () ->
+      $this = $ this
+      if $this.is "input"
+        $this.attr "value", text
+      else
+        $.fn.text.call $this, text
   
   warning: () -> @emphasize "warning"
 
