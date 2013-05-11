@@ -6,6 +6,49 @@
 /* Bootstrap code examples
 -------------------------------------------------- */
 
+ul.nav.nav-stacked > li.nav-title > a {
+    background-color: #020031;
+    background: linear-gradient(45deg, #020031 0%,#6d3353 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 );
+    border: 1px solid #020031;
+    color: #f5f5f5;
+    font-weight: bold;
+    margin-bottom: 1px;
+}
+
+ul.nav.nav-stacked > li.nav-title > a:hover {
+    background-color: #424071;
+    background: linear-gradient(45deg, #424071 0%,#ad7393 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#424071', endColorstr='#ad7393',GradientType=1 );
+    color: #b5b5b5;
+    font-weight: bold;
+}
+
+ul.nav.nav-stacked > li > a > i[class^="icon-chevron-"] {
+    float: right;
+}
+
+ul.nav.nav-stacked > li > a > i.icon-chevron-right {
+    opacity: 0.25;
+}
+
+.sidenav {
+    margin-top: 60px;
+    width: 228px;
+}
+
+.sidenav.affix {
+    top: 60px;
+}
+
+.sidenav .active a {
+    background-color: #eeeeee;
+}
+
+ul.nav.sidenav > li.active > a > i.icon-chevron-right {
+    opacity: 1;
+}
+
 section.page {
     padding-top: 60px;
 }

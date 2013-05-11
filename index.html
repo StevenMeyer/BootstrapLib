@@ -22,7 +22,7 @@
 
         <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
-    <body>
+    <body data-spy="scroll" data-target="#base-css-nav" data-offset="40">
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
@@ -61,924 +61,936 @@
                 </div>
             </div>
             
-            <section id="base-css" class="page">
-                <header>
-                    <h1>Base CSS</h1>
-                    <p class="lead">Fundamental HTML elements styled and enhanced with extensible classes.</p>
-                </header>
-                
-                <ol>
-                    <li><a href="#base-css-buttons">Buttons</a></li>
-                    <li><a href="#base-css-code">Code</a></li>
-                </ol>
-                
-                <section id="base-css-buttons" class="component">
-                    <header class="page-header">
-                        <h1>Buttons</h1>
-                        <p class="lead">Visually standardised buttons.</p>
-                    </header>
-                    <section>
+            <div class="row">
+                <div class="span3" id="base-css-nav">
+                    <ul class="nav nav-tabs nav-stacked sidenav affix" data-spy="affix" data-offset-top="200">
+                        <li class="nav-title"><a href="#base-css">Base Css <i class="icon-chevron-up icon-white"></i></a></li>
+                        <li><a href="#base-css-buttons">Buttons <i class="icon-chevron-right"></i></a></li>
+                        <li><a href="#base-css-code">Code <i class="icon-chevron-right"></i></a></li>
+                    </ul>
+                </div>
+            
+                <div class="span9">
+                    <section id="base-css" class="page">
                         <header>
-                            <h2>What's New?</h2>
+                            <h1>Base CSS</h1>
+                            <p class="lead">Fundamental HTML elements styled and enhanced with extensible classes.</p>
                         </header>
-                        <p>This class provides convenience methods for setting visual styles.</p>
-                        <p>The <code>.text()</code> method adds the text to the <code>value</code> attribute of <code>&lt;input&gt;</code> elements and retrieves from it.</p>
-                    </section>
-                    <section id="base-css-buttons-defaultbuttons">
-                        <header>
-                            <h2>Default Buttons</h2>
-                        </header>
-                        <p>Button styles can be applied to anything. However, typically you'll want to apply these only to <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements for the best rendering.</p>
-                        <table class="table table-striped table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Button</th>
-                                    <th>Method</th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><button class="btn">Default</button></td>
-                                    <td><code><a href="#base-css-buttons-defaultstyle">.defaultStyle()</a></code></td>
-                                    <td>Standard grey button with gradient.</td>
-                                </tr>
-                                <tr>
-                                    <td><button class="btn btn-primary">Primary</button></td>
-                                    <td><code><a href="#base-css-buttons-primary">.primary()</a></code></td>
-                                    <td>Provides extra visual weight and identifies the primary action in a set of buttons.</td>
-                                </tr>
-                                <tr>
-                                    <td><button class="btn btn-info">Info</button></td>
-                                    <td><code><a href="#base-css-buttons-info">.info()</a></code></td>
-                                    <td>Used as an alternative to the default styles.</td>
-                                </tr>
-                                <tr>
-                                    <td><button class="btn btn-success">Success</button></td>
-                                    <td><code><a href="#base-css-buttons-success">.success()</a></code></td>
-                                    <td>Indicates a successful or positive action.</td>
-                                </tr>
-                                <tr>
-                                    <td><button class="btn btn-warning">Warning</button></td>
-                                    <td><code><a href="#base-css-buttons-warning">.warning()</a></code></td>
-                                    <td>Indicates that caution should be taken with this action.</td>
-                                </tr>
-                                <tr>
-                                    <td><button class="btn btn-danger">Danger</button></td>
-                                    <td><code><a href="#base-css-buttons-danger">.danger()</a></code></td>
-                                    <td>Indicates a dangerous or potentially negative action.</td>
-                                </tr>
-                                <tr>
-                                    <td><button class="btn btn-inverse">Inverse</button></td>
-                                    <td><code><a href="#base-css-buttons-inverse">.inverse()</a></code></td>
-                                    <td>Alternative dark grey button, not tied to a semantic or use.</td>
-                                </tr>
-                                <tr>
-                                    <td><button class="btn btn-link">Link</button></td>
-                                    <td><code><a href="#base-css-buttons-link">.link()</a></code></td>
-                                    <td>De-emphasise a button by making it look like a link whilst maintaining button behaviour.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p><span class="label label-info">Heads up!</span> As the <abbr title="Cascading Style-Sheet">CSS</abbr> classes are exclusive, the last method call will determine its style. Chaining <code>.primary().danger().info()</code> has the same effect as <code>.info()</code>.</p>
-                    </section>
-                    <section id="base-css-buttons-buttonsizes">
-                        <header>
-                            <h2>Button Sizes</h2>
-                        </header>
-                        <table class="table table-striped table-bordered">
-                            <caption>There is no complementary method for <code>.block()</code>. Use <code>.removeClass("btn-block")</code>.</caption>
-                            <thead>
-                                <tr>
-                                    <th>Button</th>
-                                    <th>Method</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><button class="btn btn-large">Large button</button></td>
-                                    <td><code><a href="#base-css-buttons-large">.large()</a></code></td>
-                                </tr>
-                                <tr>
-                                    <td><button class="btn">Default button</button></td>
-                                    <td><code><a href="#base-css-buttons-defaultsize">.defaultSize()</a></code></td>
-                                </tr>
-                                <tr>
-                                    <td><button class="btn btn-small">Small button</button></td>
-                                    <td><code><a href="#base-css-buttons-small">.small()</a></code></td>
-                                </tr>
-                                <tr>
-                                    <td><button class="btn btn-mini">Mini button</button></td>
-                                    <td><code><a href="#base-css-buttons-mini">.mini()</a></code></td>
-                                </tr>
-                                <tr>
-                                    <td><button class="btn btn-block">Block-level button</button></td>
-                                    <td><code><a href="#base-css-buttons-block">.block()</a></code></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p><span class="label label-info">Heads up!</span> As the <abbr title="Cascading Style-Sheet">CSS</abbr> classes are exclusive, the last method call will determine its style. Chaining <code>.defaultSize().mini().large()</code> has the same effect as <code>.large()</code>.</p>
-                    </section>
-                    <section>
-                        <header>
-                            <h2>Disabled state</h2>
-                        </header>
-                        <p>Remove a button's click affordance by fading it back by 50%.</p>
-                        <table class="table table-striped table-bordered">
-                            <caption>Enable buttons again with <code><a href="#base-css-button-enable">.enable()</a></code></caption>
-                            <thead>
-                                <tr>
-                                    <th>Button</th>
-                                    <th>Method</th>
-                                    <th>Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><button class="btn btn-large disabled" disabled="disabled">Button</button></td>
-                                    <td><code><a href="#base-css-buttons-disable">.disable()</a></code></td>
-                                    <td>Fades the button and disables events on <code>&lt;button&gt;</code> and <code>&lt;input&gt;</code> elements.</td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#" class="btn btn-large disabled">Link</a></td>
-                                    <td><code><a href="#base-css-buttons-disable">.disable()</a></code></td>
-                                    <td>Fades the button. <span class="label label-warning">This will not disable events. Links may still be clicked.</span> You must use custom JavaScript to disable events.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </section>
-                    <section>
-                        <header>
-                            <h2>One Class, Multiple Tags</h2>
-                        </header>
-                        <p>This class can be used on any element, but you should use <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code> or <code>&lt;input&gt;</code> elements.</p>
-                        <p>As a best practise, try to match the element for your context. Use <code>&lt;input&gt;</code> to create buttons in an HTML form.</p>
-                    </section>
-                    <section id="base-css-buttons-creation" class="creation">
-                        <header>
-                            <h2>Creation</h2>
-                        </header>
-                        <div class="method">
-                            <h3>constructor() <small>Return type: Button</small></h3>
-                            <p class="lead">Create a new Button element.</p>
-                            <pre>new Button( tagName = "button" )</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt>tagName</dt>
-                                    <dd><p class="param-type">String</p><p>The button will have this tag name. This can be any tag, but "a", "button" and "input" will produce the best results.</p></dd>
-                                </dl>
-                            </div>
-                        </div>
-                        <div class="method">
-                            <h3>Button.decorate() <small>Return type: Button</small></h3>
-                            <p class="lead">Add Button functionality to an existing object.</p>
-                            <pre>Button.decorate( object )</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt>object</dt>
-                                    <dd><p class="param-type">Object</p><p>This object will be decorated as a Button object.</p></dd>
-                                </dl>
-                            </div>
-                        </div>
-                    </section>
-                    <section id="base-css-buttons-methods" class="methods">
-                        <header>
-                            <h2>Methods</h2>
-                        </header>
-                        <ul>
-                            <li>Default styles
-                                <ul>
-                                    <li><a href="#base-css-buttons-danger">.danger()</a></li>
-                                    <li><a href="#base-css-buttons-defaultstyle">.defaultStyle()</a></li>
-                                    <li><a href="#base-css-buttons-emphasize">.emphasize()</a></li>
-                                    <li><a href="#base-css-buttons-info">.info()</a></li>
-                                    <li><a href="#base-css-buttons-inverse">.inverse()</a></li>
-                                    <li><a href="#base-css-buttons-link">.link()</a></li>
-                                    <li><a href="#base-css-buttons-primary">.primary()</a></li>
-                                    <li><a href="#base-css-buttons-success">.success()</a></li>
-                                    <li><a href="#base-css-buttons-warning">.warning()</a></li>
-                                </ul>
-                            </li>
-                            <li>Button sizes
-                                <ul>
-                                    <li><a href="#base-css-buttons-block">.block()</a></li>
-                                    <li><a href="#base-css-buttons-defaultsize">.defaultSize()</a></li>
-                                    <li><a href="#base-css-buttons-large">.large()</a></li>
-                                    <li><a href="#base-css-buttons-mini">.mini()</a></li>
-                                    <li><a href="#base-css-buttons-size">.size()</a></li>
-                                    <li><a href="#base-css-buttons-small">.small()</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#base-css-buttons-disable">.disable()</a></li>
-                            <li><a href="#base-css-buttons-enable">.enable()</a></li>
-                            <li><a href="#base-css-buttons-text">.text()</a></li>
-                        </ul>
-                        <div id="base-css-buttons-block" class="target"></div>
-                        <div class="method">
-                            <h3>.block() <small>Return type: Button</small></h3>
-                            <p class="lead">Set the button to be a block-level button, filling the width of its parent.</p>
-                            <p>See <a href="#base-css-buttons-buttonsizes">button sizes</a>.</p>
-                            <pre>block()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt hidden="hidden">Parameters</dt>
-                                    <dd>This method has no parameters.</dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Button</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <div id="base-css-buttons-block-example-parent">
-                                        <p class="text-center">Parent</p>
-                                        <button class="btn btn-block btn-primary">Primary Example</button>
-                                        <button class="btn btn-block">Default Example</button>
+
+                        <ol>
+                            <li><a href="#base-css-buttons">Buttons</a></li>
+                            <li><a href="#base-css-code">Code</a></li>
+                        </ol>
+
+                        <section id="base-css-buttons" class="component">
+                            <header class="page-header">
+                                <h1>Buttons</h1>
+                                <p class="lead">Visually standardised buttons.</p>
+                            </header>
+                            <section>
+                                <header>
+                                    <h2>What's New?</h2>
+                                </header>
+                                <p>This class provides convenience methods for setting visual styles.</p>
+                                <p>The <code>.text()</code> method adds the text to the <code>value</code> attribute of <code>&lt;input&gt;</code> elements and retrieves from it.</p>
+                            </section>
+                            <section id="base-css-buttons-defaultbuttons">
+                                <header>
+                                    <h2>Default Buttons</h2>
+                                </header>
+                                <p>Button styles can be applied to anything. However, typically you'll want to apply these only to <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements for the best rendering.</p>
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Button</th>
+                                            <th>Method</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><button class="btn">Default</button></td>
+                                            <td><code><a href="#base-css-buttons-defaultstyle">.defaultStyle()</a></code></td>
+                                            <td>Standard grey button with gradient.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><button class="btn btn-primary">Primary</button></td>
+                                            <td><code><a href="#base-css-buttons-primary">.primary()</a></code></td>
+                                            <td>Provides extra visual weight and identifies the primary action in a set of buttons.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><button class="btn btn-info">Info</button></td>
+                                            <td><code><a href="#base-css-buttons-info">.info()</a></code></td>
+                                            <td>Used as an alternative to the default styles.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><button class="btn btn-success">Success</button></td>
+                                            <td><code><a href="#base-css-buttons-success">.success()</a></code></td>
+                                            <td>Indicates a successful or positive action.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><button class="btn btn-warning">Warning</button></td>
+                                            <td><code><a href="#base-css-buttons-warning">.warning()</a></code></td>
+                                            <td>Indicates that caution should be taken with this action.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><button class="btn btn-danger">Danger</button></td>
+                                            <td><code><a href="#base-css-buttons-danger">.danger()</a></code></td>
+                                            <td>Indicates a dangerous or potentially negative action.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><button class="btn btn-inverse">Inverse</button></td>
+                                            <td><code><a href="#base-css-buttons-inverse">.inverse()</a></code></td>
+                                            <td>Alternative dark grey button, not tied to a semantic or use.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><button class="btn btn-link">Link</button></td>
+                                            <td><code><a href="#base-css-buttons-link">.link()</a></code></td>
+                                            <td>De-emphasise a button by making it look like a link whilst maintaining button behaviour.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p><span class="label label-info">Heads up!</span> As the <abbr title="Cascading Style-Sheet">CSS</abbr> classes are exclusive, the last method call will determine its style. Chaining <code>.primary().danger().info()</code> has the same effect as <code>.info()</code>.</p>
+                            </section>
+                            <section id="base-css-buttons-buttonsizes">
+                                <header>
+                                    <h2>Button Sizes</h2>
+                                </header>
+                                <table class="table table-striped table-bordered">
+                                    <caption>There is no complementary method for <code>.block()</code>. Use <code>.removeClass("btn-block")</code>.</caption>
+                                    <thead>
+                                        <tr>
+                                            <th>Button</th>
+                                            <th>Method</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><button class="btn btn-large">Large button</button></td>
+                                            <td><code><a href="#base-css-buttons-large">.large()</a></code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><button class="btn">Default button</button></td>
+                                            <td><code><a href="#base-css-buttons-defaultsize">.defaultSize()</a></code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><button class="btn btn-small">Small button</button></td>
+                                            <td><code><a href="#base-css-buttons-small">.small()</a></code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><button class="btn btn-mini">Mini button</button></td>
+                                            <td><code><a href="#base-css-buttons-mini">.mini()</a></code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><button class="btn btn-block">Block-level button</button></td>
+                                            <td><code><a href="#base-css-buttons-block">.block()</a></code></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p><span class="label label-info">Heads up!</span> As the <abbr title="Cascading Style-Sheet">CSS</abbr> classes are exclusive, the last method call will determine its style. Chaining <code>.defaultSize().mini().large()</code> has the same effect as <code>.large()</code>.</p>
+                            </section>
+                            <section>
+                                <header>
+                                    <h2>Disabled state</h2>
+                                </header>
+                                <p>Remove a button's click affordance by fading it back by 50%.</p>
+                                <table class="table table-striped table-bordered">
+                                    <caption>Enable buttons again with <code><a href="#base-css-button-enable">.enable()</a></code></caption>
+                                    <thead>
+                                        <tr>
+                                            <th>Button</th>
+                                            <th>Method</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><button class="btn btn-large disabled" disabled="disabled">Button</button></td>
+                                            <td><code><a href="#base-css-buttons-disable">.disable()</a></code></td>
+                                            <td>Fades the button and disables events on <code>&lt;button&gt;</code> and <code>&lt;input&gt;</code> elements.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="#" class="btn btn-large disabled">Link</a></td>
+                                            <td><code><a href="#base-css-buttons-disable">.disable()</a></code></td>
+                                            <td>Fades the button. <span class="label label-warning">This will not disable events. Links may still be clicked.</span> You must use custom JavaScript to disable events.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </section>
+                            <section>
+                                <header>
+                                    <h2>One Class, Multiple Tags</h2>
+                                </header>
+                                <p>This class can be used on any element, but you should use <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code> or <code>&lt;input&gt;</code> elements.</p>
+                                <p>As a best practise, try to match the element for your context. Use <code>&lt;input&gt;</code> to create buttons in an HTML form.</p>
+                            </section>
+                            <section id="base-css-buttons-creation" class="creation">
+                                <header>
+                                    <h2>Creation</h2>
+                                </header>
+                                <div class="method">
+                                    <h3>constructor() <small>Return type: Button</small></h3>
+                                    <p class="lead">Create a new Button element.</p>
+                                    <pre>new Button( tagName = "button" )</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt>tagName</dt>
+                                            <dd><p class="param-type">String</p><p>The button will have this tag name. This can be any tag, but "a", "button" and "input" will produce the best results.</p></dd>
+                                        </dl>
                                     </div>
                                 </div>
-                                <pre class="prettyprint"><ol><li>var button1 = new Button(),</li><li>    button2 = new Button();</li><li>button1.text( "Primary Example" ).primary().block();</li><li>button2.text( "Default Example" ).block();</li></ol></pre>
-                            </div>
-                        </div>
-                        <div id="base-css-buttons-danger" class="target"></div>
-                        <div class="method">
-                            <h3>.danger() <small>Return type: Button</small></h3>
-                            <p class="lead">Changes the button's style to indicate a dangerous or negative action.</p>
-                            <p>See <a href="#base-css-buttons-defaultbuttons">default buttons</a>.</p>
-                            <pre>danger()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt hidden="hidden">Parameters</dt>
-                                    <dd>This method has no parameters.</dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Button</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <button class="btn btn-danger">Example</button>
+                                <div class="method">
+                                    <h3>Button.decorate() <small>Return type: Button</small></h3>
+                                    <p class="lead">Add Button functionality to an existing object.</p>
+                                    <pre>Button.decorate( object )</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt>object</dt>
+                                            <dd><p class="param-type">Object</p><p>This object will be decorated as a Button object.</p></dd>
+                                        </dl>
+                                    </div>
                                 </div>
-                                <pre class="prettyprint"><ol><li>var theButton = new Button();</li><li>theButton.text( "Example" ).danger();</li></ol></pre>
-                            </div>
-                        </div>
-                        <div id="base-css-buttons-defaultsize" class="target"></div>
-                        <div class="method">
-                            <h3>.defaultSize() <small>Return type: Button</small></h3>
-                            <p class="lead">Changes the button's size to the default size.</p>
-                            <p>See <a href="#base-css-buttons-buttonsizes">button sizes</a>.</p>
-                            <pre>defaultSize()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt hidden="hidden">Parameters</dt>
-                                    <dd>This method has no parameters.</dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Button</p></dd>
-                                </dl>
-                            </div>
-                        </div>
-                        <div id="base-css-buttons-defaultstyle" class="target"></div>
-                        <div class="method">
-                            <h3>.defaultStyle() <small>Return type: Button</small></h3>
-                            <p class="lead">Changes the button's style to the default grey button.</p>
-                            <p>See <a href="#base-css-buttons-defaultbuttons">default buttons</a>.</p>
-                            <pre>defaultStyle()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt hidden="hidden">Parameters</dt>
-                                    <dd>This method has no parameters.</dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Button</p></dd>
-                                </dl>
-                            </div>
-                        </div>
-                        <div id="base-css-buttons-disable" class="target"></div>
-                        <div class="method">
-                            <h3>.disable() <small>Return type: Button</small></h3>
-                            <p class="lead">Fades the button back by 50% to make it look less clickable.</p>
-                            <p>Adds the <code>disabled="disabled"</code> attribute to <code>&lt;button&gt;</code> and <code>&lt;input&gt;</code> elements to disable events. Other elements will still have their events live.</p>
-                            <pre>disable()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt hidden="hidden">Parameters</dt>
-                                    <dd>This method has no parameters.</dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Button</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <button class="btn btn-primary disabled" disabled="disabled">Primary Button</button>
-                                    <input class="btn btn-inverse disabled" type="button" disabled="disabled" value="Inverse Button Input" />
-                                    <a class="btn disabled" href="#">Default Link</a>
+                            </section>
+                            <section id="base-css-buttons-methods" class="methods">
+                                <header>
+                                    <h2>Methods</h2>
+                                </header>
+                                <ul>
+                                    <li>Default styles
+                                        <ul>
+                                            <li><a href="#base-css-buttons-danger">.danger()</a></li>
+                                            <li><a href="#base-css-buttons-defaultstyle">.defaultStyle()</a></li>
+                                            <li><a href="#base-css-buttons-emphasize">.emphasize()</a></li>
+                                            <li><a href="#base-css-buttons-info">.info()</a></li>
+                                            <li><a href="#base-css-buttons-inverse">.inverse()</a></li>
+                                            <li><a href="#base-css-buttons-link">.link()</a></li>
+                                            <li><a href="#base-css-buttons-primary">.primary()</a></li>
+                                            <li><a href="#base-css-buttons-success">.success()</a></li>
+                                            <li><a href="#base-css-buttons-warning">.warning()</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>Button sizes
+                                        <ul>
+                                            <li><a href="#base-css-buttons-block">.block()</a></li>
+                                            <li><a href="#base-css-buttons-defaultsize">.defaultSize()</a></li>
+                                            <li><a href="#base-css-buttons-large">.large()</a></li>
+                                            <li><a href="#base-css-buttons-mini">.mini()</a></li>
+                                            <li><a href="#base-css-buttons-size">.size()</a></li>
+                                            <li><a href="#base-css-buttons-small">.small()</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#base-css-buttons-disable">.disable()</a></li>
+                                    <li><a href="#base-css-buttons-enable">.enable()</a></li>
+                                    <li><a href="#base-css-buttons-text">.text()</a></li>
+                                </ul>
+                                <div id="base-css-buttons-block" class="target"></div>
+                                <div class="method">
+                                    <h3>.block() <small>Return type: Button</small></h3>
+                                    <p class="lead">Set the button to be a block-level button, filling the width of its parent.</p>
+                                    <p>See <a href="#base-css-buttons-buttonsizes">button sizes</a>.</p>
+                                    <pre>block()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt hidden="hidden">Parameters</dt>
+                                            <dd>This method has no parameters.</dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Button</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <div id="base-css-buttons-block-example-parent">
+                                                <p class="text-center">Parent</p>
+                                                <button class="btn btn-block btn-primary">Primary Example</button>
+                                                <button class="btn btn-block">Default Example</button>
+                                            </div>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var button1 = new Button(),</li><li>    button2 = new Button();</li><li>button1.text( "Primary Example" ).primary().block();</li><li>button2.text( "Default Example" ).block();</li></ol></pre>
+                                    </div>
                                 </div>
-                                <pre class="prettyprint"><ol><li>var button1 = new Button(),</li><li>    button2 = new Button( "input" ),</li><li>    button3 = new Button( "a" );</li><li>button1.text( "Primary Button" ).primary().disable();</li><li>button2.text( "Inverse Button Input" ).inverse().disable();</li><li>button3.text( "Default Link" ).disable();</li></ol></pre>
-                            </div>
-                        </div>
-                        <div id="base-css-buttons-emphasize" class="target"></div>
-                        <div class="method">
-                            <h3>.emphasize() <small>Return type: Button</small></h3>
-                            <p class="lead">Set a button style.</p>
-                            <p>This method has the same effect as the style methods. The method <code>.primary()</code> is equivalent to <code>.emphasize( "primary" )</code>, for example. The default style can be achieved by omitting the parameter. See <a href="#base-css-buttons-defaultbuttons">default buttons</a>.</p>
-                            <pre>emphasize( emphasis = "" )</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt>emphasis</dt>
-                                    <dd><p class="param-type">String</p><p>The emphasis style to set. This can be any of the <abbr title="Cascading Style-Sheet">CSS</abbr> classes without their leading "btn-". The legal values are <code>danger</code>, <code>info</code>, <code>inverse</code>, <code>link</code>, <code>primary</code>, <code>success</code> and <code>warning</code>. Illegal values will invoke the default style.</p></dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Button</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <button class="btn btn-primary">Example</button>
+                                <div id="base-css-buttons-danger" class="target"></div>
+                                <div class="method">
+                                    <h3>.danger() <small>Return type: Button</small></h3>
+                                    <p class="lead">Changes the button's style to indicate a dangerous or negative action.</p>
+                                    <p>See <a href="#base-css-buttons-defaultbuttons">default buttons</a>.</p>
+                                    <pre>danger()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt hidden="hidden">Parameters</dt>
+                                            <dd>This method has no parameters.</dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Button</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <button class="btn btn-danger">Example</button>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var theButton = new Button();</li><li>theButton.text( "Example" ).danger();</li></ol></pre>
+                                    </div>
                                 </div>
-                                <pre class="prettyprint"><ol><li>var theButton = new Button();</li><li>theButton.text( "Example" ).emphasize( "primary" );</li></ol></pre>
-                            </div>
-                        </div>
-                        <div id="base-css-buttons-enable" class="target"></div>
-                        <div class="method">
-                            <h3>.enable() <small>Return type: Button</small></h3>
-                            <p class="lead">The opposite of <code><a href="#base-css-buttons-disable">.disable()</a></code>, this method removes the &aelig;sthetic style and attribute.</p>
-                            <pre>disable()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt hidden="hidden">Parameters</dt>
-                                    <dd>This method has no parameters.</dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Button</p></dd>
-                                </dl>
-                            </div>
-                        </div>
-                        <div id="base-css-buttons-info" class="target"></div>
-                        <div class="method">
-                            <h3>.info() <small>Return type: Button</small></h3>
-                            <p class="lead">Changes the button's style to an alternative style.</p>
-                            <p>See <a href="#base-css-buttons-defaultbuttons">default buttons</a>.</p>
-                            <pre>info()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt hidden="hidden">Parameters</dt>
-                                    <dd>This method has no parameters.</dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Button</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <button class="btn btn-info">Example</button>
+                                <div id="base-css-buttons-defaultsize" class="target"></div>
+                                <div class="method">
+                                    <h3>.defaultSize() <small>Return type: Button</small></h3>
+                                    <p class="lead">Changes the button's size to the default size.</p>
+                                    <p>See <a href="#base-css-buttons-buttonsizes">button sizes</a>.</p>
+                                    <pre>defaultSize()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt hidden="hidden">Parameters</dt>
+                                            <dd>This method has no parameters.</dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Button</p></dd>
+                                        </dl>
+                                    </div>
                                 </div>
-                                <pre class="prettyprint"><ol><li>var theButton = new Button();</li><li>theButton.text( "Example" ).info();</li></ol></pre>
-                            </div>
-                        </div>
-                        <div id="base-css-buttons-inverse" class="target"></div>
-                        <div class="method">
-                            <h3>.inverse() <small>Return type: Button</small></h3>
-                            <p class="lead">Changes the button's style to an alternative, dark grey style.</p>
-                            <p>See <a href="#base-css-buttons-defaultbuttons">default buttons</a>.</p>
-                            <pre>inverse()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt hidden="hidden">Parameters</dt>
-                                    <dd>This method has no parameters.</dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Button</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <button class="btn btn-inverse">Example</button>
+                                <div id="base-css-buttons-defaultstyle" class="target"></div>
+                                <div class="method">
+                                    <h3>.defaultStyle() <small>Return type: Button</small></h3>
+                                    <p class="lead">Changes the button's style to the default grey button.</p>
+                                    <p>See <a href="#base-css-buttons-defaultbuttons">default buttons</a>.</p>
+                                    <pre>defaultStyle()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt hidden="hidden">Parameters</dt>
+                                            <dd>This method has no parameters.</dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Button</p></dd>
+                                        </dl>
+                                    </div>
                                 </div>
-                                <pre class="prettyprint"><ol><li>var theButton = new Button();</li><li>theButton.text( "Example" ).inverse();</li></ol></pre>
-                            </div>
-                        </div>
-                        <div id="base-css-buttons-large" class="target"></div>
-                        <div class="method">
-                            <h3>.large() <small>Return type: Button</small></h3>
-                            <p class="lead">Changes the button's size to the large size.</p>
-                            <p>See <a href="#base-css-buttons-buttonsizes">button sizes</a>.</p>
-                            <pre>large()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt hidden="hidden">Parameters</dt>
-                                    <dd>This method has no parameters.</dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Button</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <button class="btn btn-large">Large</button>
-                                    <button class="btn">Default</button>
+                                <div id="base-css-buttons-disable" class="target"></div>
+                                <div class="method">
+                                    <h3>.disable() <small>Return type: Button</small></h3>
+                                    <p class="lead">Fades the button back by 50% to make it look less clickable.</p>
+                                    <p>Adds the <code>disabled="disabled"</code> attribute to <code>&lt;button&gt;</code> and <code>&lt;input&gt;</code> elements to disable events. Other elements will still have their events live.</p>
+                                    <pre>disable()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt hidden="hidden">Parameters</dt>
+                                            <dd>This method has no parameters.</dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Button</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <button class="btn btn-primary disabled" disabled="disabled">Primary Button</button>
+                                            <input class="btn btn-inverse disabled" type="button" disabled="disabled" value="Inverse Button Input" />
+                                            <a class="btn disabled" href="#">Default Link</a>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var button1 = new Button(),</li><li>    button2 = new Button( "input" ),</li><li>    button3 = new Button( "a" );</li><li>button1.text( "Primary Button" ).primary().disable();</li><li>button2.text( "Inverse Button Input" ).inverse().disable();</li><li>button3.text( "Default Link" ).disable();</li></ol></pre>
+                                    </div>
                                 </div>
-                                <pre class="prettyprint"><ol><li>var button1 = new Button(),</li><li>    button2 = new Button();</li><li>button1.text( "Large" ).large();</li><li>button2.text( "Default" );</li></ol></pre>
-                            </div>
-                        </div>
-                        <div id="base-css-buttons-link" class="target"></div>
-                        <div class="method">
-                            <h3>.link() <small>Return type: Button</small></h3>
-                            <p class="lead">Changes the button's style to appear to be a link whilst behaving as a button.</p>
-                            <p>See <a href="#base-css-buttons-defaultbuttons">default buttons</a>.</p>
-                            <pre>link()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt hidden="hidden">Parameters</dt>
-                                    <dd>This method has no parameters.</dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Button</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <button class="btn btn-link">Example</button>
+                                <div id="base-css-buttons-emphasize" class="target"></div>
+                                <div class="method">
+                                    <h3>.emphasize() <small>Return type: Button</small></h3>
+                                    <p class="lead">Set a button style.</p>
+                                    <p>This method has the same effect as the style methods. The method <code>.primary()</code> is equivalent to <code>.emphasize( "primary" )</code>, for example. The default style can be achieved by omitting the parameter. See <a href="#base-css-buttons-defaultbuttons">default buttons</a>.</p>
+                                    <pre>emphasize( emphasis = "" )</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt>emphasis</dt>
+                                            <dd><p class="param-type">String</p><p>The emphasis style to set. This can be any of the <abbr title="Cascading Style-Sheet">CSS</abbr> classes without their leading "btn-". The legal values are <code>danger</code>, <code>info</code>, <code>inverse</code>, <code>link</code>, <code>primary</code>, <code>success</code> and <code>warning</code>. Illegal values will invoke the default style.</p></dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Button</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <button class="btn btn-primary">Example</button>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var theButton = new Button();</li><li>theButton.text( "Example" ).emphasize( "primary" );</li></ol></pre>
+                                    </div>
                                 </div>
-                                <pre class="prettyprint"><ol><li>var theButton = new Button();</li><li>theButton.text( "Example" ).link();</li></ol></pre>
-                            </div>
-                        </div>
-                        <div id="base-css-buttons-mini" class="target"></div>
-                        <div class="method">
-                            <h3>.mini() <small>Return type: Button</small></h3>
-                            <p class="lead">Changes the button's size to the smallest, miniature size.</p>
-                            <p>See <a href="#base-css-buttons-buttonsizes">button sizes</a>.</p>
-                            <pre>mini()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt hidden="hidden">Parameters</dt>
-                                    <dd>This method has no parameters.</dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Button</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <button class="btn">Default</button>
-                                    <button class="btn btn-mini">Mini</button>
+                                <div id="base-css-buttons-enable" class="target"></div>
+                                <div class="method">
+                                    <h3>.enable() <small>Return type: Button</small></h3>
+                                    <p class="lead">The opposite of <code><a href="#base-css-buttons-disable">.disable()</a></code>, this method removes the &aelig;sthetic style and attribute.</p>
+                                    <pre>disable()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt hidden="hidden">Parameters</dt>
+                                            <dd>This method has no parameters.</dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Button</p></dd>
+                                        </dl>
+                                    </div>
                                 </div>
-                                <pre class="prettyprint"><ol><li>var button1 = new Button(),</li><li>    button2 = new Button();</li><li>button1.text( "Default" );</li><li>button2.text( "Mini" ).mini();</li></ol></pre>
-                            </div>
-                        </div>
-                        <div id="base-css-buttons-primary" class="target"></div>
-                        <div class="method">
-                            <h3>.primary() <small>Return type: Button</small></h3>
-                            <p class="lead">Changes the button's style to identify the primary action in a set of buttons.</p>
-                            <p>See <a href="#base-css-buttons-defaultbuttons">default buttons</a>.</p>
-                            <pre>primary()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt hidden="hidden">Parameters</dt>
-                                    <dd>This method has no parameters.</dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Button</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <button class="btn btn-primary">Example</button>
+                                <div id="base-css-buttons-info" class="target"></div>
+                                <div class="method">
+                                    <h3>.info() <small>Return type: Button</small></h3>
+                                    <p class="lead">Changes the button's style to an alternative style.</p>
+                                    <p>See <a href="#base-css-buttons-defaultbuttons">default buttons</a>.</p>
+                                    <pre>info()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt hidden="hidden">Parameters</dt>
+                                            <dd>This method has no parameters.</dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Button</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <button class="btn btn-info">Example</button>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var theButton = new Button();</li><li>theButton.text( "Example" ).info();</li></ol></pre>
+                                    </div>
                                 </div>
-                                <pre class="prettyprint"><ol><li>var theButton = new Button();</li><li>theButton.text( "Example" ).primary();</li></ol></pre>
-                            </div>
-                        </div>
-                        <div id="base-css-buttons-size" class="target"></div>
-                        <div class="method">
-                            <h3>.size() <small>Return type: Button</small></h3>
-                            <p class="lead">Set a button size.</p>
-                            <p>This method has the same effect as the size methods. The method <code>.large()</code> is equivalent to <code>.size( "large" )</code>, for example. The default size can be achieved by setting the parameter to an empty string. See <a href="#base-css-buttons-buttonsizes">button sizes</a>.</p>
-                            <pre>size( size )</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt>emphasis</dt>
-                                    <dd><p class="param-type">String</p><p>The size to set. This can be any of the <abbr title="Cascading Style-Sheet">CSS</abbr> classes without their leading "btn-". The legal values are <code>large</code>, <code>small</code> and <code>mini</code>. Illegal values will invoke the default size.</p>
-                                        <p><span class="label label-warning">Watch out!</span> If the parameter loosely evaluates to <code>null</code>, then the deprecated jQuery <code>.size()</code> method will be called. This method returns a Number and will terminate the chain.</p></dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Button</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <button class="btn btn-large">Example</button>
+                                <div id="base-css-buttons-inverse" class="target"></div>
+                                <div class="method">
+                                    <h3>.inverse() <small>Return type: Button</small></h3>
+                                    <p class="lead">Changes the button's style to an alternative, dark grey style.</p>
+                                    <p>See <a href="#base-css-buttons-defaultbuttons">default buttons</a>.</p>
+                                    <pre>inverse()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt hidden="hidden">Parameters</dt>
+                                            <dd>This method has no parameters.</dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Button</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <button class="btn btn-inverse">Example</button>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var theButton = new Button();</li><li>theButton.text( "Example" ).inverse();</li></ol></pre>
+                                    </div>
                                 </div>
-                                <pre class="prettyprint"><ol><li>var theButton = new Button();</li><li>theButton.text( "Example" ).size( "large" );</li></ol></pre>
-                            </div>
-                        </div>
-                        <div class="method deprecated-method">
-                            <h3>.size() <span class="label label-warning">Deprecated</span> <small>Return type: Number</small></h3>
-                            <p class="lead">Return the number of elements in the jQuery object.</p>
-                            <p>This method is used when <code>.size()</code> is called without parameters. The <code>.size()</code> method is deprecated as of jQuery 1.8. Use the <code>.length</code> <em>property</em> instead.</p>
-                            <pre>size()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt hidden="hidden">Parameters</dt>
-                                    <dd><p>This method has no parameters.</p><p><span class="label label-warning">Watch out!</span> Calling this method with parameters will call the previous <code>.size()</code> method. This method returns a Button.</p></dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Number</p></dd>
-                                </dl>
-                            </div>
-                        </div>
-                        <div id="base-css-buttons-small" class="target"></div>
-                        <div class="method">
-                            <h3>.small() <small>Return type: Button</small></h3>
-                            <p class="lead">Changes the button's size to the small size.</p>
-                            <p>See <a href="#base-css-buttons-buttonsizes">button sizes</a>.</p>
-                            <pre>small()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt hidden="hidden">Parameters</dt>
-                                    <dd>This method has no parameters.</dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Button</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <button class="btn">Default</button>
-                                    <button class="btn btn-small">Small</button>
+                                <div id="base-css-buttons-large" class="target"></div>
+                                <div class="method">
+                                    <h3>.large() <small>Return type: Button</small></h3>
+                                    <p class="lead">Changes the button's size to the large size.</p>
+                                    <p>See <a href="#base-css-buttons-buttonsizes">button sizes</a>.</p>
+                                    <pre>large()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt hidden="hidden">Parameters</dt>
+                                            <dd>This method has no parameters.</dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Button</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <button class="btn btn-large">Large</button>
+                                            <button class="btn">Default</button>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var button1 = new Button(),</li><li>    button2 = new Button();</li><li>button1.text( "Large" ).large();</li><li>button2.text( "Default" );</li></ol></pre>
+                                    </div>
                                 </div>
-                                <pre class="prettyprint"><ol><li>var button1 = new Button(),</li><li>    button2 = new Button();</li><li>button1.text( "Default" );</li><li>button2.text( "Small" ).small();</li></ol></pre>
-                            </div>
-                        </div>
-                        <div id="base-css-buttons-success" class="target"></div>
-                        <div class="method">
-                            <h3>.success() <small>Return type: Button</small></h3>
-                            <p class="lead">Changes the button's style to indicate a successful or positive action.</p>
-                            <p>See <a href="#base-css-buttons-defaultbuttons">default buttons</a>.</p>
-                            <pre>success()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt hidden="hidden">Parameters</dt>
-                                    <dd>This method has no parameters.</dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Button</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <button class="btn btn-success">Example</button>
+                                <div id="base-css-buttons-link" class="target"></div>
+                                <div class="method">
+                                    <h3>.link() <small>Return type: Button</small></h3>
+                                    <p class="lead">Changes the button's style to appear to be a link whilst behaving as a button.</p>
+                                    <p>See <a href="#base-css-buttons-defaultbuttons">default buttons</a>.</p>
+                                    <pre>link()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt hidden="hidden">Parameters</dt>
+                                            <dd>This method has no parameters.</dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Button</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <button class="btn btn-link">Example</button>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var theButton = new Button();</li><li>theButton.text( "Example" ).link();</li></ol></pre>
+                                    </div>
                                 </div>
-                                <pre class="prettyprint"><ol><li>var theButton = new Button();</li><li>theButton.text( "Example" ).success();</li></ol></pre>
-                            </div>
-                        </div>
-                        <div id="base-css-buttons-text" class="target"></div>
-                        <div class="method">
-                            <h3>.text() <small>Return type: Button</small></h3>
-                            <p class="lead">Set the content of each element in the set to the specified text.</p>
-                            <p>This method differs from the standard jQuery method as it adds the text to the <code>value</code> attribute of <code>&lt;input&gt;</code> elements.</p>
-                            <pre>text( textString )</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt>textString</dt>
-                                    <dd><p class="param-type">String / function ( index, text )</p><p>A string of text to set as the content of each element. The parameter may be a function returning the text to set. The function receives the index position of the element in the set and the old text value as arguments.</p></dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Button</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <input class="btn btn-primary" value="Example" type="button" />
+                                <div id="base-css-buttons-mini" class="target"></div>
+                                <div class="method">
+                                    <h3>.mini() <small>Return type: Button</small></h3>
+                                    <p class="lead">Changes the button's size to the smallest, miniature size.</p>
+                                    <p>See <a href="#base-css-buttons-buttonsizes">button sizes</a>.</p>
+                                    <pre>mini()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt hidden="hidden">Parameters</dt>
+                                            <dd>This method has no parameters.</dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Button</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <button class="btn">Default</button>
+                                            <button class="btn btn-mini">Mini</button>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var button1 = new Button(),</li><li>    button2 = new Button();</li><li>button1.text( "Default" );</li><li>button2.text( "Mini" ).mini();</li></ol></pre>
+                                    </div>
                                 </div>
-                                <pre class="prettyprint"><ol><li>var theButton = new Button( "input" );</li><li>theButton.primary().text( "Example" );</li></ol></pre>
-                            </div>
-                        </div>
-                        <div class="method">
-                            <h3>.text() <small>Return type: String</small></h3>
-                            <p class="lead">Get the combined text contents of each element in the set of elements, including their decendants.</p>
-                            <p>This method differs from the standard jQuery method as it adds the contents of the <code>value</code> attribute of <code>&lt;input&gt;</code> elements to the result.</p>
-                            <pre>text()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt hidden="hidden">Parameters</dt>
-                                    <dd>This method has no parameters.</dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">String</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    Example
+                                <div id="base-css-buttons-primary" class="target"></div>
+                                <div class="method">
+                                    <h3>.primary() <small>Return type: Button</small></h3>
+                                    <p class="lead">Changes the button's style to identify the primary action in a set of buttons.</p>
+                                    <p>See <a href="#base-css-buttons-defaultbuttons">default buttons</a>.</p>
+                                    <pre>primary()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt hidden="hidden">Parameters</dt>
+                                            <dd>This method has no parameters.</dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Button</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <button class="btn btn-primary">Example</button>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var theButton = new Button();</li><li>theButton.text( "Example" ).primary();</li></ol></pre>
+                                    </div>
                                 </div>
-                                <pre class="prettyprint"><ol><li>var theButton = Button.decorate( $("&lt;input type='button' value='Example'&gt;") );</li><li>document.write( theButton.text() );</li></ol></pre>
-                            </div>
-                        </div>
-                        <div id="base-css-buttons-warning" class="target"></div>
-                        <div class="method">
-                            <h3>.warning() <small>Return type: Button</small></h3>
-                            <p class="lead">Changes the button's style to indicate that caution should be taken with this action.</p>
-                            <p>See <a href="#base-css-buttons-defaultbuttons">default buttons</a>.</p>
-                            <pre>warning()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt hidden="hidden">Parameters</dt>
-                                    <dd>This method has no parameters.</dd>
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Button</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <button class="btn btn-warning">Example</button>
+                                <div id="base-css-buttons-size" class="target"></div>
+                                <div class="method">
+                                    <h3>.size() <small>Return type: Button</small></h3>
+                                    <p class="lead">Set a button size.</p>
+                                    <p>This method has the same effect as the size methods. The method <code>.large()</code> is equivalent to <code>.size( "large" )</code>, for example. The default size can be achieved by setting the parameter to an empty string. See <a href="#base-css-buttons-buttonsizes">button sizes</a>.</p>
+                                    <pre>size( size )</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt>emphasis</dt>
+                                            <dd><p class="param-type">String</p><p>The size to set. This can be any of the <abbr title="Cascading Style-Sheet">CSS</abbr> classes without their leading "btn-". The legal values are <code>large</code>, <code>small</code> and <code>mini</code>. Illegal values will invoke the default size.</p>
+                                                <p><span class="label label-warning">Watch out!</span> If the parameter loosely evaluates to <code>null</code>, then the deprecated jQuery <code>.size()</code> method will be called. This method returns a Number and will terminate the chain.</p></dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Button</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <button class="btn btn-large">Example</button>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var theButton = new Button();</li><li>theButton.text( "Example" ).size( "large" );</li></ol></pre>
+                                    </div>
                                 </div>
-                                <pre class="prettyprint"><ol><li>var theButton = new Button();</li><li>theButton.text( "Example" ).warning();</li></ol></pre>
+                                <div class="method deprecated-method">
+                                    <h3>.size() <span class="label label-warning">Deprecated</span> <small>Return type: Number</small></h3>
+                                    <p class="lead">Return the number of elements in the jQuery object.</p>
+                                    <p>This method is used when <code>.size()</code> is called without parameters. The <code>.size()</code> method is deprecated as of jQuery 1.8. Use the <code>.length</code> <em>property</em> instead.</p>
+                                    <pre>size()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt hidden="hidden">Parameters</dt>
+                                            <dd><p>This method has no parameters.</p><p><span class="label label-warning">Watch out!</span> Calling this method with parameters will call the previous <code>.size()</code> method. This method returns a Button.</p></dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Number</p></dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div id="base-css-buttons-small" class="target"></div>
+                                <div class="method">
+                                    <h3>.small() <small>Return type: Button</small></h3>
+                                    <p class="lead">Changes the button's size to the small size.</p>
+                                    <p>See <a href="#base-css-buttons-buttonsizes">button sizes</a>.</p>
+                                    <pre>small()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt hidden="hidden">Parameters</dt>
+                                            <dd>This method has no parameters.</dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Button</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <button class="btn">Default</button>
+                                            <button class="btn btn-small">Small</button>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var button1 = new Button(),</li><li>    button2 = new Button();</li><li>button1.text( "Default" );</li><li>button2.text( "Small" ).small();</li></ol></pre>
+                                    </div>
+                                </div>
+                                <div id="base-css-buttons-success" class="target"></div>
+                                <div class="method">
+                                    <h3>.success() <small>Return type: Button</small></h3>
+                                    <p class="lead">Changes the button's style to indicate a successful or positive action.</p>
+                                    <p>See <a href="#base-css-buttons-defaultbuttons">default buttons</a>.</p>
+                                    <pre>success()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt hidden="hidden">Parameters</dt>
+                                            <dd>This method has no parameters.</dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Button</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <button class="btn btn-success">Example</button>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var theButton = new Button();</li><li>theButton.text( "Example" ).success();</li></ol></pre>
+                                    </div>
+                                </div>
+                                <div id="base-css-buttons-text" class="target"></div>
+                                <div class="method">
+                                    <h3>.text() <small>Return type: Button</small></h3>
+                                    <p class="lead">Set the content of each element in the set to the specified text.</p>
+                                    <p>This method differs from the standard jQuery method as it adds the text to the <code>value</code> attribute of <code>&lt;input&gt;</code> elements.</p>
+                                    <pre>text( textString )</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt>textString</dt>
+                                            <dd><p class="param-type">String / function ( index, text )</p><p>A string of text to set as the content of each element. The parameter may be a function returning the text to set. The function receives the index position of the element in the set and the old text value as arguments.</p></dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Button</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <input class="btn btn-primary" value="Example" type="button" />
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var theButton = new Button( "input" );</li><li>theButton.primary().text( "Example" );</li></ol></pre>
+                                    </div>
+                                </div>
+                                <div class="method">
+                                    <h3>.text() <small>Return type: String</small></h3>
+                                    <p class="lead">Get the combined text contents of each element in the set of elements, including their decendants.</p>
+                                    <p>This method differs from the standard jQuery method as it adds the contents of the <code>value</code> attribute of <code>&lt;input&gt;</code> elements to the result.</p>
+                                    <pre>text()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt hidden="hidden">Parameters</dt>
+                                            <dd>This method has no parameters.</dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">String</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            Example
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var theButton = Button.decorate( $("&lt;input type='button' value='Example'&gt;") );</li><li>document.write( theButton.text() );</li></ol></pre>
+                                    </div>
+                                </div>
+                                <div id="base-css-buttons-warning" class="target"></div>
+                                <div class="method">
+                                    <h3>.warning() <small>Return type: Button</small></h3>
+                                    <p class="lead">Changes the button's style to indicate that caution should be taken with this action.</p>
+                                    <p>See <a href="#base-css-buttons-defaultbuttons">default buttons</a>.</p>
+                                    <pre>warning()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt hidden="hidden">Parameters</dt>
+                                            <dd>This method has no parameters.</dd>
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Button</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <button class="btn btn-warning">Example</button>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var theButton = new Button();</li><li>theButton.text( "Example" ).warning();</li></ol></pre>
+                                    </div>
+                                </div>
+                            </section>
+                        </section>
+
+                        <section id="base-css-code" class="component">
+                            <header class="page-header">
+                                <h1>Code</h1>
+                                <p class="lead">Stylised snippets of code.</p>
+                            </header>
+                            <h2>What's New?</h2>
+                            <p>These <code>code</code> and <code>pre</code> elements are for showing code. Using <a href="base-css-code-append">.append()</a> or <a href="base-css-code-prepend">.prepend()</a> will add the HTML as plaintext.</p>
+                            <p>Use <a href="http://api.jquery.com/html/">.html()</a>, <a href="#base-css-code-appendhtml">appendHtml()</a> or <a href="#base-css-code-prependhtml">.prependHtml()</a> to add mark-up.</p>
+                            <h2>Inline</h2>
+                            <p>Wrap snippets of code with <code>&lt;code&gt;</code>.</p>
+                            <div class="bs-docs-example">
+                                HTML5 documents always start with <code>&lt;!DOCTYPE html&gt;</code>.
                             </div>
-                        </div>
+                            <pre class="prettyprint"><ol><li>HTML5 documents always start with &lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/code&gt;</li></ol></pre>
+                            <p>
+                                The <code>&lt;code&gt;</code> element can be created by using <code><a href="#base-css-code-creation">new Code()</a></code> or <code><a href="#base-css-code-creation">Code.decorate( $("&lt;code&gt;") )</a></code>
+                            </p>
+                            <h2>Basic Block</h2>
+                            <p>Use <code>&lt;pre&gt;</code> for multiple lines of code.</p>
+                            <div class="bs-docs-example">
+                                <pre>
+        &lt;script type="text/javascript" src="js/jquery.js"&gt;&lt;/script&gt;
+        &lt;script type="text/javascript"&gt;&lt;!--
+            var Code, code;
+            Code = uk.co.stevenmeyer.Bootstrap.Css.Code;
+            code = new Code(true);
+        --&gt;&lt;/script&gt;
+                                </pre>
+                            </div>
+                            <pre class="prettyprint"><ol><li>&lt;pre&gt;</li><li>&amp;lt;script type="text/javascript" src="js/jquery.js"&amp;gt;&amp;lt;/script&amp;gt;</li><li>&amp;lt;script type="text/javascript"&amp;gt;&amp;lt;!--</li><li>    var Code, code;</li><li>    Code = uk.co.stevenmeyer.Bootstrap.Css.Code;</li><li>    code = new Code(true);</li><li>--&amp;gt;&amp;lt;/script&amp;gt;</li><li>&lt;/pre&gt;</li></ol></pre>
+                            <p>
+                                The <code>pre</code> element can be created by using <code><a href="#base-css-code-creation">new Code(block = true)</a></code> or <code><a href="#base-css-code-creation">Code.decorate( $("&lt;pre&gt;") )</a></code>
+                            </p>
+                            <section id="base-css-code-creation" class="creation">
+                                <header>
+                                    <h2>Creation</h2>
+                                </header>
+                                <div class="method">
+                                    <h3>constructor() <small>Return type: Code</small></h3>
+                                    <p>Create a new, empty Code object.</p>
+                                    <pre>new uk.co.stevenmeyer.Bootstrap.Css.Code( block );</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt>block</dt>
+                                            <dd><p class="param-type">Boolean</p><p>If this evaluates to <code>true</code>, the element will be a block-level &lt;pre&gt;, otherwise it will be an inline &lt;code&gt;.</p></dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="method">
+                                    <h3>Code.decorate() <small>Return type: Code</small></h3>
+                                    <p>Add Code functionality to an existing object.</p>
+                                    <pre>uk.co.stevenmeyer.Bootstrap.Css.Code.decorate( object );</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt>object</dt>
+                                            <dd><p class="param-type">Object</p><p>This object will be decorated as a Code object.</p></dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </section>
+                            <section id="base-css-code-methods" class="methods">
+                                <header>
+                                    <h2>Methods</h2>
+                                </header>
+                                <ol>
+                                    <li><a href="#base-css-code-append">append()</a></li>
+                                    <li><a href="#base-css-code-appendhtml">appendHtml()</a></li>
+                                    <li><a href="#base-css-code-isblock">isBlock()</a></li>
+                                    <li><a href="#base-css-code-isinline">isInline()</a></li>
+                                    <li><a href="#base-css-code-prepend">prepend()</a></li>
+                                    <li><a href="#base-css-code-prependhtml">prependHtml()</a></li>
+                                    <li><a href="#base-css-code-scrollable">scrollable()</a></li>
+                                    <li><a href="#base-css-code-tostring">toString()</a></li>
+                                </ol>
+                                <div id="base-css-code-append" class="target"></div>
+                                <div class="method">
+                                    <h3>.append() <small>Return type: Code</small></h3>
+                                    <p>Insert content to the end of the element. All mark-up will be displayed as text.</p>
+                                    <pre>append( content [, moreContent] )</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt>content</dt>
+                                            <dd><p class="param-type">htmlString / Element / jQuery / function( index, html )</p><p>DOM element, HTML string or jQuery object to insert at the end of the element. The parameter may be a function which returns any of these objects. The function receives the index 0 (zero) and the old HTML value of the element as arguments. Within the function, <code>this</code> refers to the Code object.</p></dd>
+                                            <dt>moreContent</dt>
+                                            <dd><p class="param-type">htmlString / Element / Array / jQuery / function( index, html )</p><p>One or more additional DOM elements, arrays of elements, HTML strings, jQuery objects or functions which return one or more of these objects to insert at the end of the element.</p></dd>
+                                            <dt class="method-return">Return</dt>
+                                            <dd><p class="param-type">Code</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <pre><p>Hello, world!</p>&lt;em&gt;My HTML, &lt;strong&gt;exposed!&lt;/strong&gt;&lt;/em&gt;</pre>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var example = uk.co.stevenmeyer.Bootstrap.Css.Code.decorate( $( "&lt;pre&gt;&lt;p&gt;Hello, world!&lt;/p&gt;&lt;/pre&gt;" ) );</li><li>example.append( $( "&lt;em&gt;My HTML, &lt;strong&gt;exposed!&lt;/strong&gt;&lt;/em&gt; ) );</li></ol></pre>
+                                        <p>jQuery objects are cloned before they are used, so the original object will not be affected.</p>
+                                    </div>
+                                </div>
+
+                                <div id="base-css-code-appendhtml" class="target"></div>
+                                <div class="method">
+                                    <h3>.appendHtml() <small>Return type: Code</small></h3>
+                                    <p>Insert content to the end of the element. This function is equivalent to the original jQuery <code>append()</code> function.</p>
+                                    <pre>appendHtml( content [, moreContent] )</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt>content</dt>
+                                            <dd><p class="param-type">htmlString / Element / jQuery</p><p>DOM element, HTML string or jQuery object to insert at the end of the element.</p></dd>
+                                            <dt>moreContent</dt>
+                                            <dd><p class="param-type">htmlString / Element / Array / jQuery</p><p>One or more additional DOM elements, arrays of elements, HTML strings or jQuery objects to insert at the end of the element.</p></dd>
+                                            <dt class="method-return">Return</dt>
+                                            <dd><p class="param-type">Code</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <pre><p>Hello, world!</p><p>My HTML is <strong>not</strong> exposed.</p></pre>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var example = uk.co.stevenmeyer.Bootstrap.Css.Code.decorate( $( "&lt;pre&gt;&lt;p&gt;Hello, world!&lt;/p&gt;&lt;/pre&gt;" ) );</li><li>example.appendHtml( $( "&lt;p&gt;My HTML is &lt;strong>not&lt;/strong&gt; exposed.&lt;/p&gt;" ) )</li></ol></pre>
+                                    </div>
+                                </div>
+
+                                <div id="base-css-code-isblock" class="target"></div>
+                                <div class="method">
+                                    <h3>.isBlock() <small>Return type: Boolean</small></h3>
+                                    <p>Returns <code>true</code> if the element is a <code>&lt;pre&gt;</code> element.</p>
+                                    <pre>isBlock()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Boolean</p><code>True</code> if the element is a block code element.</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+
+                                <div id="base-css-code-isinline" class="target"></div>
+                                <div class="method">
+                                    <h3>.isInline() <small>Return type: Boolean</small></h3>
+                                    <p>Returns <code>true</code> if the element is a <code>&lt;code&gt;</code> element.</p>
+                                    <pre>isInline()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Boolean</p><p><code>True</code> if the element is an inline code element.</p></dd>
+                                        </dl>
+                                    </div>
+                                </div>
+
+                                <div id="base-css-code-prepend" class="target"></div>
+                                <div class="method">
+                                    <h3>.prepend() <small>Return type: Code</small></h3>
+                                    <p>Insert content at the beginning of the element. All mark-up will be displayed as text.</p>
+                                    <pre>prepend( content [, moreContent] )</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt>content</dt>
+                                            <dd><p class="param-type">htmlString / Element / jQuery / function( index, html )</p><p>DOM element, HTML string or jQuery object to insert at the beginning of the element. The parameter may be a function which returns any of these objects. The function receives the index 0 (zero) and the old HTML value of the element as arguments. Within the function, <code>this</code> refers to the Code object.</p></dd>
+                                            <dt>moreContent</dt>
+                                            <dd><p class="param-type">htmlString / Element / Array / jQuery / function( index, html )</p><p>One or more additional DOM elements, arrays of elements, HTML strings, jQuery objects or functions which return one or more of these objects to insert at the beginning of the element.</p></dd>
+                                            <dt class="method-return">Return</dt>
+                                            <dd><p class="param-type">Code</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <pre>&lt;p&gt;Hello, Aberystwyth!&lt;p&gt;<p>Hello, world!</p></pre>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var example = uk.co.stevenmeyer.Bootstrap.Css.Code.decorate( $( "&lt;pre&gt;&lt;p&gt;Hello, world!&lt;/p&gt;&lt;/pre&gt;" ) );</li><li>example.prepend( $( "&lt;p&gt;Hello, Aberystwyth!&lt;/p&gt;" ) );</li></ol></pre>
+                                        <p>jQuery objects are cloned before they are used, so the original object will not be affected.</p>
+                                    </div>
+                                </div>
+
+                                <div id="base-css-code-prependhtml" class="target"></div>
+                                <div class="method">
+                                    <h3>.prependHtml() <small>Return type: Code</small></h3>
+                                    <p>Insert content at the beginning of the element. This function is equivalent to the original jQuery <code>prepend()</code> function.</p>
+                                    <pre>prependHtml( content [, moreContent] )</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt>content</dt>
+                                            <dd><p class="param-type">htmlString / Element / jQuery</p><p>DOM element, HTML string or jQuery object to insert at the beginning of the element.</p></dd>
+                                            <dt>moreContent</dt>
+                                            <dd><p class="param-type">htmlString / Element / Array / jQuery</p><p>One or more additional DOM elements, arrays of elements, HTML strings or jQuery objects to insert at the beginning of the element.</p></dd>
+                                            <dt class="method-return">Return</dt>
+                                            <dd><p class="param-type">Code</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <pre><p>Hello, Aberystwyth!</p><p>Hello, world!</p></pre>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var example = uk.co.stevenmeyer.Bootstrap.Css.Code.decorate( $( "&lt;pre&gt;&lt;p&gt;Hello, world!&lt;/p&gt;&lt;/pre&gt;" ) );</li><li>example.prependHtml( $( "&lt;p&gt;Hello, Aberystwyth!&lt;/p&gt;" ) )</li></ol></pre>
+                                    </div>
+                                </div>
+
+                                <div id="base-css-code-scrollable" class="target"></div>
+                                <div class="method">
+                                    <h3>.scrollable() <small>Return type: Code</small></h3>
+                                    <p>Adds the <code>.pre-scrollable</code> class to block code elements. This will set a max-height of 350px and provide a y-axis scrollbar.</p>
+                                    <pre>scrollable()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">Code</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">
+                                            <pre class="pre-scrollable">Sirloin commodo pork sed jowl dolor shoulder qui officia eiusmod reprehenderit dolore, chicken cillum cupidatat. Nisi capicola consectetur chuck, reprehenderit strip steak frankfurter exercitation occaecat kielbasa culpa incididunt tempor meatloaf. Deserunt biltong turducken elit leberkas in ex, reprehenderit sed short loin chuck do irure tenderloin. Velit commodo swine in cillum. Salami laborum dolore, drumstick id eu in pancetta ex esse cupidatat ham hock turducken. Minim hamburger flank venison consequat, occaecat bacon jerky chicken nulla ground round excepteur incididunt.
+
+        Labore consequat t-bone swine cow filet mignon nulla corned beef ut. Ad ex beef elit veniam pork loin. Pastrami dolore filet mignon brisket, pariatur eu aliqua do deserunt ground round ad labore. Capicola eu cow brisket, enim meatloaf drumstick id in. Aliquip pork loin pork belly prosciutto turkey. Turkey flank ground round dolor hamburger labore consequat cow swine proident rump chicken. Ad turducken beef ribs, magna eu aute drumstick andouille ullamco.
+
+        Andouille incididunt veniam pork belly rump. Occaecat consectetur sunt sint proident ground round frankfurter sed fugiat velit exercitation excepteur prosciutto est. Ribeye tongue nisi boudin incididunt rump andouille aute turducken mollit. Nostrud ham commodo sunt anim. Nisi ex ham hock, flank salami deserunt duis.
+
+        Reprehenderit eu sausage, sed pork chop shank chuck frankfurter minim proident cillum cow rump ullamco. Dolor filet mignon rump, ex tongue flank est andouille pancetta cow ball tip sausage qui aliqua swine. Swine sed pork belly aute bacon leberkas ground round pariatur sint excepteur bresaola. Dolore ground round sint est aliqua bresaola filet mignon jowl tail irure meatloaf leberkas pancetta. Jowl quis pork chop incididunt. Filet mignon non ut tri-tip andouille ham in dolore tenderloin officia quis. In sed pork loin, sirloin ex in dolore ball tip turkey tenderloin.
+
+        Excepteur ut turducken commodo laborum, culpa boudin bacon mollit pancetta deserunt filet mignon strip steak short ribs chuck. Magna pork chop esse, dolor enim tempor qui corned beef venison in. Spare ribs exercitation corned beef strip steak cow, beef ribs rump biltong culpa. Adipisicing tri-tip chuck, fatback sint deserunt pork short loin sausage rump pig strip steak elit do. Proident enim velit mollit.
+
+        Bacon short ribs pancetta andouille. Mollit elit tail esse, ut culpa strip steak cow ham. Rump reprehenderit voluptate, doner ea velit cow elit spare ribs do consequat. Beef ribs spare ribs occaecat sunt aliquip, frankfurter esse veniam est shank sirloin.
+
+        Consectetur eu turkey, ham hock prosciutto quis irure in tail pastrami ut short loin. Ea nostrud magna, elit nulla excepteur frankfurter bresaola veniam pastrami eu voluptate. Veniam pork chop ullamco ham hock. Sed et pariatur mollit minim. Mollit pork meatloaf ut frankfurter enim. Nulla pork belly sed venison laboris pariatur fugiat prosciutto anim. Nulla sint exercitation bresaola est irure, short ribs tri-tip dolore reprehenderit swine shoulder venison beef ribs ullamco.
+
+        Excepteur short loin ut tail. Est pork loin cillum, in capicola dolor voluptate occaecat officia. In cillum frankfurter meatball pariatur dolor ut prosciutto proident nulla boudin chuck fatback brisket salami. Tongue aute beef ham hock consequat bresaola in pastrami reprehenderit drumstick. Shoulder id rump dolor.</pre>
+                                        </div>
+                                        <pre class="prettyprint"><ol><li>var example = new uk.co.stevenmeyer.Bootstrap.Css.Code();</li><li>example.scrollable().append( "Sirloin commodo pork sed ..." )</li></ol></pre>
+                                    </div>
+                                </div>
+
+                                <div id="base-css-code-tostring" class="target"></div>
+                                <div class="method">
+                                    <h3>.toString() <small>Return type: String</small></h3>
+                                    <p>Gets the HTML for the object, including its tags. This is similar to calling <code>.get(0).outerHTML</code>, but without relying on outerHTML support.</p>
+                                    <pre>toString()</pre>
+                                    <div class="params">
+                                        <h4>Parameters</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt>Return</dt>
+                                            <dd><p class="param-type">String</p><p>The mark-up of the element in its entirety, including its <code>&lt;code&gt;</code> or <code>&lt;pre&gt;</code> tag.</p></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="example">
+                                        <h4>Example</h4>
+                                        <div class="bs-docs-example">&lt;code&gt;Hello, world!&lt;/code&gt;</div>
+                                        <pre class="prettyprint"><ol><li>var example = new uk.co.stevenmeyer.Bootstrap.Css.Code();</li><li>example.append( "Hello, world!" ).toString()</li></ol></pre>
+                                    </div>
+                                </div>
+                            </section>
+                        </section>
                     </section>
-                </section>
-            
-                <section id="base-css-code" class="component">
-                    <header class="page-header">
-                        <h1>Code</h1>
-                        <p class="lead">Stylised snippets of code.</p>
-                    </header>
-                    <h2>What's New?</h2>
-                    <p>These <code>code</code> and <code>pre</code> elements are for showing code. Using <a href="base-css-code-append">.append()</a> or <a href="base-css-code-prepend">.prepend()</a> will add the HTML as plaintext.</p>
-                    <p>Use <a href="http://api.jquery.com/html/">.html()</a>, <a href="#base-css-code-appendhtml">appendHtml()</a> or <a href="#base-css-code-prependhtml">.prependHtml()</a> to add mark-up.</p>
-                    <h2>Inline</h2>
-                    <p>Wrap snippets of code with <code>&lt;code&gt;</code>.</p>
-                    <div class="bs-docs-example">
-                        HTML5 documents always start with <code>&lt;!DOCTYPE html&gt;</code>.
-                    </div>
-                    <pre class="prettyprint"><ol><li>HTML5 documents always start with &lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/code&gt;</li></ol></pre>
-                    <p>
-                        The <code>&lt;code&gt;</code> element can be created by using <code><a href="#base-css-code-creation">new Code()</a></code> or <code><a href="#base-css-code-creation">Code.decorate( $("&lt;code&gt;") )</a></code>
-                    </p>
-                    <h2>Basic Block</h2>
-                    <p>Use <code>&lt;pre&gt;</code> for multiple lines of code.</p>
-                    <div class="bs-docs-example">
-                        <pre>
-&lt;script type="text/javascript" src="js/jquery.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript"&gt;&lt;!--
-    var Code, code;
-    Code = uk.co.stevenmeyer.Bootstrap.Css.Code;
-    code = new Code(true);
---&gt;&lt;/script&gt;
-                        </pre>
-                    </div>
-                    <pre class="prettyprint"><ol><li>&lt;pre&gt;</li><li>&amp;lt;script type="text/javascript" src="js/jquery.js"&amp;gt;&amp;lt;/script&amp;gt;</li><li>&amp;lt;script type="text/javascript"&amp;gt;&amp;lt;!--</li><li>    var Code, code;</li><li>    Code = uk.co.stevenmeyer.Bootstrap.Css.Code;</li><li>    code = new Code(true);</li><li>--&amp;gt;&amp;lt;/script&amp;gt;</li><li>&lt;/pre&gt;</li></ol></pre>
-                    <p>
-                        The <code>pre</code> element can be created by using <code><a href="#base-css-code-creation">new Code(block = true)</a></code> or <code><a href="#base-css-code-creation">Code.decorate( $("&lt;pre&gt;") )</a></code>
-                    </p>
-                    <section id="base-css-code-creation" class="creation">
-                        <header>
-                            <h2>Creation</h2>
-                        </header>
-                        <div class="method">
-                            <h3>constructor() <small>Return type: Code</small></h3>
-                            <p>Create a new, empty Code object.</p>
-                            <pre>new uk.co.stevenmeyer.Bootstrap.Css.Code( block );</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt>block</dt>
-                                    <dd><p class="param-type">Boolean</p><p>If this evaluates to <code>true</code>, the element will be a block-level &lt;pre&gt;, otherwise it will be an inline &lt;code&gt;.</p></dd>
-                                </dl>
-                            </div>
-                        </div>
-                        <div class="method">
-                            <h3>Code.decorate() <small>Return type: Code</small></h3>
-                            <p>Add Code functionality to an existing object.</p>
-                            <pre>uk.co.stevenmeyer.Bootstrap.Css.Code.decorate( object );</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt>object</dt>
-                                    <dd><p class="param-type">Object</p><p>This object will be decorated as a Code object.</p></dd>
-                                </dl>
-                            </div>
-                        </div>
-                    </section>
-                    <section id="base-css-code-methods" class="methods">
-                        <header>
-                            <h2>Methods</h2>
-                        </header>
-                        <ol>
-                            <li><a href="#base-css-code-append">append()</a></li>
-                            <li><a href="#base-css-code-appendhtml">appendHtml()</a></li>
-                            <li><a href="#base-css-code-isblock">isBlock()</a></li>
-                            <li><a href="#base-css-code-isinline">isInline()</a></li>
-                            <li><a href="#base-css-code-prepend">prepend()</a></li>
-                            <li><a href="#base-css-code-prependhtml">prependHtml()</a></li>
-                            <li><a href="#base-css-code-scrollable">scrollable()</a></li>
-                            <li><a href="#base-css-code-tostring">toString()</a></li>
-                        </ol>
-                        <div id="base-css-code-append" class="target"></div>
-                        <div class="method">
-                            <h3>.append() <small>Return type: Code</small></h3>
-                            <p>Insert content to the end of the element. All mark-up will be displayed as text.</p>
-                            <pre>append( content [, moreContent] )</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt>content</dt>
-                                    <dd><p class="param-type">htmlString / Element / jQuery / function( index, html )</p><p>DOM element, HTML string or jQuery object to insert at the end of the element. The parameter may be a function which returns any of these objects. The function receives the index 0 (zero) and the old HTML value of the element as arguments. Within the function, <code>this</code> refers to the Code object.</p></dd>
-                                    <dt>moreContent</dt>
-                                    <dd><p class="param-type">htmlString / Element / Array / jQuery / function( index, html )</p><p>One or more additional DOM elements, arrays of elements, HTML strings, jQuery objects or functions which return one or more of these objects to insert at the end of the element.</p></dd>
-                                    <dt class="method-return">Return</dt>
-                                    <dd><p class="param-type">Code</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <pre><p>Hello, world!</p>&lt;em&gt;My HTML, &lt;strong&gt;exposed!&lt;/strong&gt;&lt;/em&gt;</pre>
-                                </div>
-                                <pre class="prettyprint"><ol><li>var example = uk.co.stevenmeyer.Bootstrap.Css.Code.decorate( $( "&lt;pre&gt;&lt;p&gt;Hello, world!&lt;/p&gt;&lt;/pre&gt;" ) );</li><li>example.append( $( "&lt;em&gt;My HTML, &lt;strong&gt;exposed!&lt;/strong&gt;&lt;/em&gt; ) );</li></ol></pre>
-                                <p>jQuery objects are cloned before they are used, so the original object will not be affected.</p>
-                            </div>
-                        </div>
-
-                        <div id="base-css-code-appendhtml" class="target"></div>
-                        <div class="method">
-                            <h3>.appendHtml() <small>Return type: Code</small></h3>
-                            <p>Insert content to the end of the element. This function is equivalent to the original jQuery <code>append()</code> function.</p>
-                            <pre>appendHtml( content [, moreContent] )</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt>content</dt>
-                                    <dd><p class="param-type">htmlString / Element / jQuery</p><p>DOM element, HTML string or jQuery object to insert at the end of the element.</p></dd>
-                                    <dt>moreContent</dt>
-                                    <dd><p class="param-type">htmlString / Element / Array / jQuery</p><p>One or more additional DOM elements, arrays of elements, HTML strings or jQuery objects to insert at the end of the element.</p></dd>
-                                    <dt class="method-return">Return</dt>
-                                    <dd><p class="param-type">Code</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <pre><p>Hello, world!</p><p>My HTML is <strong>not</strong> exposed.</p></pre>
-                                </div>
-                                <pre class="prettyprint"><ol><li>var example = uk.co.stevenmeyer.Bootstrap.Css.Code.decorate( $( "&lt;pre&gt;&lt;p&gt;Hello, world!&lt;/p&gt;&lt;/pre&gt;" ) );</li><li>example.appendHtml( $( "&lt;p&gt;My HTML is &lt;strong>not&lt;/strong&gt; exposed.&lt;/p&gt;" ) )</li></ol></pre>
-                            </div>
-                        </div>
-                        
-                        <div id="base-css-code-isblock" class="target"></div>
-                        <div class="method">
-                            <h3>.isBlock() <small>Return type: Boolean</small></h3>
-                            <p>Returns <code>true</code> if the element is a <code>&lt;pre&gt;</code> element.</p>
-                            <pre>isBlock()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Boolean</p><code>True</code> if the element is a block code element.</dd>
-                                </dl>
-                            </div>
-                        </div>
-                        
-                        <div id="base-css-code-isinline" class="target"></div>
-                        <div class="method">
-                            <h3>.isInline() <small>Return type: Boolean</small></h3>
-                            <p>Returns <code>true</code> if the element is a <code>&lt;code&gt;</code> element.</p>
-                            <pre>isInline()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Boolean</p><p><code>True</code> if the element is an inline code element.</p></dd>
-                                </dl>
-                            </div>
-                        </div>
-                        
-                        <div id="base-css-code-prepend" class="target"></div>
-                        <div class="method">
-                            <h3>.prepend() <small>Return type: Code</small></h3>
-                            <p>Insert content at the beginning of the element. All mark-up will be displayed as text.</p>
-                            <pre>prepend( content [, moreContent] )</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt>content</dt>
-                                    <dd><p class="param-type">htmlString / Element / jQuery / function( index, html )</p><p>DOM element, HTML string or jQuery object to insert at the beginning of the element. The parameter may be a function which returns any of these objects. The function receives the index 0 (zero) and the old HTML value of the element as arguments. Within the function, <code>this</code> refers to the Code object.</p></dd>
-                                    <dt>moreContent</dt>
-                                    <dd><p class="param-type">htmlString / Element / Array / jQuery / function( index, html )</p><p>One or more additional DOM elements, arrays of elements, HTML strings, jQuery objects or functions which return one or more of these objects to insert at the beginning of the element.</p></dd>
-                                    <dt class="method-return">Return</dt>
-                                    <dd><p class="param-type">Code</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <pre>&lt;p&gt;Hello, Aberystwyth!&lt;p&gt;<p>Hello, world!</p></pre>
-                                </div>
-                                <pre class="prettyprint"><ol><li>var example = uk.co.stevenmeyer.Bootstrap.Css.Code.decorate( $( "&lt;pre&gt;&lt;p&gt;Hello, world!&lt;/p&gt;&lt;/pre&gt;" ) );</li><li>example.prepend( $( "&lt;p&gt;Hello, Aberystwyth!&lt;/p&gt;" ) );</li></ol></pre>
-                                <p>jQuery objects are cloned before they are used, so the original object will not be affected.</p>
-                            </div>
-                        </div>
-
-                        <div id="base-css-code-prependhtml" class="target"></div>
-                        <div class="method">
-                            <h3>.prependHtml() <small>Return type: Code</small></h3>
-                            <p>Insert content at the beginning of the element. This function is equivalent to the original jQuery <code>prepend()</code> function.</p>
-                            <pre>prependHtml( content [, moreContent] )</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt>content</dt>
-                                    <dd><p class="param-type">htmlString / Element / jQuery</p><p>DOM element, HTML string or jQuery object to insert at the beginning of the element.</p></dd>
-                                    <dt>moreContent</dt>
-                                    <dd><p class="param-type">htmlString / Element / Array / jQuery</p><p>One or more additional DOM elements, arrays of elements, HTML strings or jQuery objects to insert at the beginning of the element.</p></dd>
-                                    <dt class="method-return">Return</dt>
-                                    <dd><p class="param-type">Code</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <pre><p>Hello, Aberystwyth!</p><p>Hello, world!</p></pre>
-                                </div>
-                                <pre class="prettyprint"><ol><li>var example = uk.co.stevenmeyer.Bootstrap.Css.Code.decorate( $( "&lt;pre&gt;&lt;p&gt;Hello, world!&lt;/p&gt;&lt;/pre&gt;" ) );</li><li>example.prependHtml( $( "&lt;p&gt;Hello, Aberystwyth!&lt;/p&gt;" ) )</li></ol></pre>
-                            </div>
-                        </div>
-                        
-                        <div id="base-css-code-scrollable" class="target"></div>
-                        <div class="method">
-                            <h3>.scrollable() <small>Return type: Code</small></h3>
-                            <p>Adds the <code>.pre-scrollable</code> class to block code elements. This will set a max-height of 350px and provide a y-axis scrollbar.</p>
-                            <pre>scrollable()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">Code</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">
-                                    <pre class="pre-scrollable">Sirloin commodo pork sed jowl dolor shoulder qui officia eiusmod reprehenderit dolore, chicken cillum cupidatat. Nisi capicola consectetur chuck, reprehenderit strip steak frankfurter exercitation occaecat kielbasa culpa incididunt tempor meatloaf. Deserunt biltong turducken elit leberkas in ex, reprehenderit sed short loin chuck do irure tenderloin. Velit commodo swine in cillum. Salami laborum dolore, drumstick id eu in pancetta ex esse cupidatat ham hock turducken. Minim hamburger flank venison consequat, occaecat bacon jerky chicken nulla ground round excepteur incididunt.
-
-Labore consequat t-bone swine cow filet mignon nulla corned beef ut. Ad ex beef elit veniam pork loin. Pastrami dolore filet mignon brisket, pariatur eu aliqua do deserunt ground round ad labore. Capicola eu cow brisket, enim meatloaf drumstick id in. Aliquip pork loin pork belly prosciutto turkey. Turkey flank ground round dolor hamburger labore consequat cow swine proident rump chicken. Ad turducken beef ribs, magna eu aute drumstick andouille ullamco.
-
-Andouille incididunt veniam pork belly rump. Occaecat consectetur sunt sint proident ground round frankfurter sed fugiat velit exercitation excepteur prosciutto est. Ribeye tongue nisi boudin incididunt rump andouille aute turducken mollit. Nostrud ham commodo sunt anim. Nisi ex ham hock, flank salami deserunt duis.
-
-Reprehenderit eu sausage, sed pork chop shank chuck frankfurter minim proident cillum cow rump ullamco. Dolor filet mignon rump, ex tongue flank est andouille pancetta cow ball tip sausage qui aliqua swine. Swine sed pork belly aute bacon leberkas ground round pariatur sint excepteur bresaola. Dolore ground round sint est aliqua bresaola filet mignon jowl tail irure meatloaf leberkas pancetta. Jowl quis pork chop incididunt. Filet mignon non ut tri-tip andouille ham in dolore tenderloin officia quis. In sed pork loin, sirloin ex in dolore ball tip turkey tenderloin.
-
-Excepteur ut turducken commodo laborum, culpa boudin bacon mollit pancetta deserunt filet mignon strip steak short ribs chuck. Magna pork chop esse, dolor enim tempor qui corned beef venison in. Spare ribs exercitation corned beef strip steak cow, beef ribs rump biltong culpa. Adipisicing tri-tip chuck, fatback sint deserunt pork short loin sausage rump pig strip steak elit do. Proident enim velit mollit.
-
-Bacon short ribs pancetta andouille. Mollit elit tail esse, ut culpa strip steak cow ham. Rump reprehenderit voluptate, doner ea velit cow elit spare ribs do consequat. Beef ribs spare ribs occaecat sunt aliquip, frankfurter esse veniam est shank sirloin.
-
-Consectetur eu turkey, ham hock prosciutto quis irure in tail pastrami ut short loin. Ea nostrud magna, elit nulla excepteur frankfurter bresaola veniam pastrami eu voluptate. Veniam pork chop ullamco ham hock. Sed et pariatur mollit minim. Mollit pork meatloaf ut frankfurter enim. Nulla pork belly sed venison laboris pariatur fugiat prosciutto anim. Nulla sint exercitation bresaola est irure, short ribs tri-tip dolore reprehenderit swine shoulder venison beef ribs ullamco.
-
-Excepteur short loin ut tail. Est pork loin cillum, in capicola dolor voluptate occaecat officia. In cillum frankfurter meatball pariatur dolor ut prosciutto proident nulla boudin chuck fatback brisket salami. Tongue aute beef ham hock consequat bresaola in pastrami reprehenderit drumstick. Shoulder id rump dolor.</pre>
-                                </div>
-                                <pre class="prettyprint"><ol><li>var example = new uk.co.stevenmeyer.Bootstrap.Css.Code();</li><li>example.scrollable().append( "Sirloin commodo pork sed ..." )</li></ol></pre>
-                            </div>
-                        </div>
-                        
-                        <div id="base-css-code-tostring" class="target"></div>
-                        <div class="method">
-                            <h3>.toString() <small>Return type: String</small></h3>
-                            <p>Gets the HTML for the object, including its tags. This is similar to calling <code>.get(0).outerHTML</code>, but without relying on outerHTML support.</p>
-                            <pre>toString()</pre>
-                            <div class="params">
-                                <h4>Parameters</h4>
-                                <dl class="dl-horizontal">
-                                    <dt>Return</dt>
-                                    <dd><p class="param-type">String</p><p>The mark-up of the element in its entirety, including its <code>&lt;code&gt;</code> or <code>&lt;pre&gt;</code> tag.</p></dd>
-                                </dl>
-                            </div>
-                            <div class="example">
-                                <h4>Example</h4>
-                                <div class="bs-docs-example">&lt;code&gt;Hello, world!&lt;/code&gt;</div>
-                                <pre class="prettyprint"><ol><li>var example = new uk.co.stevenmeyer.Bootstrap.Css.Code();</li><li>example.append( "Hello, world!" ).toString()</li></ol></pre>
-                            </div>
-                        </div>
-                    </section>
-                </section>
-            </section>
+                </div><!-- /span9 -->
+            </div><!-- /row:base-css -->
 
             <hr>
 
