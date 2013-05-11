@@ -12,8 +12,8 @@ section.page {
 
 section.page > header {
     background-color: #020031;
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 );
     background: linear-gradient(45deg, #020031 0%,#6d3353 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 );
     border-radius: 4px;
     color: #ffffff;
     margin-bottom: 20px;
@@ -21,7 +21,7 @@ section.page > header {
     padding-left: 60px;
 }
 
-section.component, section.creation, section.methods, div.method {
+section.component, section.component section, div.method {
     padding-top: 40px;
 }
 
@@ -29,7 +29,7 @@ section.component > header.page-header > *:first-child {
     color: #5a5a5a;
 }
 
-section.component > section.methods > ol li a {
+section.component > section.methods > * li a {
     font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
 }
 
@@ -50,12 +50,17 @@ section.component div.method > *:first-child {
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     background-color: #020031;
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 );
     background: linear-gradient(45deg, #020031 0%,#6d3353 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 );
     color: #ffffff;
     margin: -21px;
     margin-bottom: 15px;
     padding-left: 20px;
+}
+
+section.component div.deprecated-method {
+    border: 1px solid #f89406;
+    color: #aaa;
 }
 
 section.component div.method > *:first-child small {
@@ -87,11 +92,13 @@ section.component div.method > pre:after {
 section.component div.method > div.params > dl {
     /*border: 1px solid #dddddd;*/
     display: table;
+    width: 100%;
 }
 
 section.component div.method > div.params > dl > dd {
     border-bottom: 1px solid #dddddd;
     margin-bottom: 10px;
+    padding-bottom: 9px;
 }
 
 section.component div.method > div.params > dl > dd:last-child {
@@ -100,6 +107,18 @@ section.component div.method > div.params > dl > dd:last-child {
 
 section.component div.method > div.params > dl > dd p.param-type {
     font-style: italic;
+}
+
+#base-css-buttons-block-example-parent {
+    background-color: #1b1b1b;
+    background: linear-gradient(45deg, #1b1b1b 0%,#2b2b2b 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b1b1b', endColorstr='#2b2b2b',GradientType=1 );
+    border: 1px solid #000000;
+    border-radius: 4px;
+    color: #f5f5f5;
+    font-weight: bold;
+    padding: 10px;
+    width: 75%;
 }
 
 /* Base class */
