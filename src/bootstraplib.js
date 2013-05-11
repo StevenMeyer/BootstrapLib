@@ -210,15 +210,34 @@
     };
 
     Button.prototype.text = function(text) {
-      return this.map(function() {
-        var $this;
-        $this = $(this);
-        if ($this.is("input")) {
-          return $this.attr("value", text);
-        } else {
-          return $.fn.text.call($this, text);
-        }
-      });
+      var returnValue,
+        _this = this;
+      if (text != null) {
+        this.map(function(index, domElement) {
+          var $this, theText;
+          $this = $(domElement);
+          theText = typeof text === "function" ? theText = text.call(_this, index, domElement.innerText) : text;
+          console.log(domElement.tagName);
+          if (domElement.tagName.toLowerCase() === "input") {
+            return $this.attr("value", theText);
+          } else {
+            return $.fn.text.call($this, theText);
+          }
+        });
+        return this;
+      } else {
+        returnValue = "";
+        this.each(function(index, element) {
+          var $this;
+          $this = $(element);
+          if (element.tagName.toLowerCase() === "input") {
+            return returnValue += $this.attr("value");
+          } else {
+            return returnValue += $this.text();
+          }
+        });
+        return returnValue;
+      }
     };
 
     Button.prototype.warning = function() {

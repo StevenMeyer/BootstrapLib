@@ -119,12 +119,25 @@ class (namespace "#{baseNamespace}.Css").Button extends baseClass
   success: () -> @emphasize "success"
   
   text: (text) ->
-    @map () ->
-      $this = $ this
-      if $this.is "input"
-        $this.attr "value", text
-      else
-        $.fn.text.call $this, text
+    if text?
+      @map (index, domElement) =>
+        $this = $ domElement
+        theText = if typeof text is "function" then theText = text.call this, index, domElement.innerText else text
+        console.log domElement.tagName
+        if domElement.tagName.toLowerCase() is "input"
+          $this.attr "value", theText
+        else
+          $.fn.text.call $this, theText
+      this
+    else
+      returnValue = ""
+      @each (index, element) =>
+        $this = $ element
+        if element.tagName.toLowerCase() is "input"
+          returnValue += $this.attr "value"
+        else
+          returnValue += $this.text()
+      returnValue
   
   warning: () -> @emphasize "warning"
 

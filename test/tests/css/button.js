@@ -79,4 +79,11 @@
         equal(buttons.eq(1).attr("value"), text, "Input element should have value set with .text()");
         equal(buttons.eq(2).text(), text, "Link element text should be set with .text()");
     });
+    
+    test(set + ": Test getting text", function() {
+        var buttons = Button.decorate($("<button>Foo</button>").add($("<input type='button' value='Foo'>")).add($("<a>Foo</a>"))),
+            text = "FooFooFoo";
+        
+        equal(buttons.text(), text, "Getting element text should get input value, too.");
+    });
 })(uk.co.stevenmeyer.Bootstrap.Css.Button, "Css.Button");
