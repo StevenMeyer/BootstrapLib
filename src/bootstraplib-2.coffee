@@ -38,7 +38,7 @@ isDOMNode = (node) ->
 getRenderedCSS = (element, key) ->
     if element not instanceof jQuery
         element = jQuery element
-    if element
+    if element.length isnt 0
         value = element.css key
         if value is ""
             # element hasn't been added to DOM and has no style set
@@ -55,12 +55,8 @@ cssNamespace = "#{baseNamespace}.css"
 
 baseClass = class (namespace baseNamespace).Bootstrap extends $
     constructor: () ->
-        args = Array::slice.call arguments
-        if args[0]?
-            if isDOMNode(args[0]) or typeof args[0] is "string"
-                args[0] = $.apply this, args
-            if args[0] instanceof $ or args[0] instanceof (namespace baseNamespace).Bootstrap
-                $.extend this, args[0]
+        $jQuery = $.apply this, arguments
+        $.extend this, $jQuery
         this
         
     toString: () ->

@@ -45,7 +45,7 @@ getRenderedCSS = function(element, key) {
   if (!(element instanceof jQuery)) {
     element = jQuery(element);
   }
-  if (element) {
+  if (element.length !== 0) {
     value = element.css(key);
     if (value === "") {
       $body = $("body");
@@ -68,16 +68,9 @@ baseClass = (namespace(baseNamespace)).Bootstrap = (function(_super) {
   __extends(Bootstrap, _super);
 
   function Bootstrap() {
-    var args;
-    args = Array.prototype.slice.call(arguments);
-    if (args[0] != null) {
-      if (isDOMNode(args[0]) || typeof args[0] === "string") {
-        args[0] = $.apply(this, args);
-      }
-      if (args[0] instanceof $ || args[0] instanceof (namespace(baseNamespace)).Bootstrap) {
-        $.extend(this, args[0]);
-      }
-    }
+    var $jQuery;
+    $jQuery = $.apply(this, arguments);
+    $.extend(this, $jQuery);
     this;
   }
 
