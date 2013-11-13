@@ -62,6 +62,92 @@ baseClass = class (namespace baseNamespace).Bootstrap extends $
     toString: () ->
         $("<p />").append(@clone()).html()
         
+#no dependencies
+class (namespace cssNamespace).Button extends baseClass
+    BLOCK: "btn-block"
+
+    options:
+        DANGER:  "btn-danger"
+        DEFAULT: ""
+        INFO:    "btn-info"
+        LINK:    "btn-link"
+        PRIMARY: "btn-primary"
+        SUCCESS: "btn-success"
+        WARNING: "btn-warning"
+        toArray: () ->
+            Button::options[style] for style of Button::options when style isnt "toArray"
+            
+    sizes:
+        DEFAULT: ""
+        EXTRASMALL: "btn-xs"
+        LARGE: "btn-lg"
+        SMALL: "btn-sm"
+        toArray: () ->
+            Button::sizes[size] for size of Button::sizes when size isnt "toArray"
+    
+    constructor: () ->
+        args = Array::slice.call arguments
+        if not args[0]?
+            args[0] = "<button />"
+            args[1] =
+                type: "button"
+        Button.__super__.constructor.apply this, args
+        @size = () => Button::size.apply this, arguments
+        @addClass "btn"
+        
+    block: (block = true) ->
+        if block is false
+            @removeClass Button::BLOCK
+        else
+            @addClass Button::BLOCK
+        
+    danger: () ->
+        @option Button::options.DANGER
+        
+    defaultSize: () ->
+        @size Button::sizes.DEFAULT
+        
+    defaultStyle: () ->
+        @option()
+        
+    exclusiveClass = (style = "", classes) ->
+        @removeClass classes.join " "
+        if style in classes then @addClass style else this
+        
+    extraSmall: () ->
+        @size Button::sizes.EXTRASMALL
+        
+    info: () ->
+        @option Button::options.INFO
+        
+    large: () ->
+        @size Button::sizes.LARGE
+        
+    link: () ->
+        @option Button::options.LINK
+        
+    option: (emphasis = "") ->
+        exclusiveClass.call this, emphasis, Button::options.toArray()
+        
+    primary: () ->
+        @option Button::options.PRIMARY
+        
+    size: () ->
+        if arguments[0]?
+            exclusiveClass.call this, arguments[0], Button::sizes.toArray()
+        else
+            @length # original, deprecated jQuery size() function
+            
+    small: () ->
+        @size Button::sizes.SMALL
+        
+    success: () ->
+        @option Button::options.SUCCESS
+        
+    warning: () ->
+        @option Button::options.WARNING
+        
+#no dependencies
 class (namespace cssNamespace).Code extends baseClass
     constructor: () ->
         args = Array::slice.call arguments

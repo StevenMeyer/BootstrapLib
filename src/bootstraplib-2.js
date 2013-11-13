@@ -9,7 +9,8 @@
 
 var $, baseClass, baseNamespace, cssNamespace, getRenderedCSS, isDOMNode,
   __hasProp = {}.hasOwnProperty,
-  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
 window.namespace || (window.namespace = function(name, values) {
   var key, subpackage, target, value, _i, _len, _ref;
@@ -81,6 +82,153 @@ baseClass = (namespace(baseNamespace)).Bootstrap = (function(_super) {
   return Bootstrap;
 
 })($);
+
+(namespace(cssNamespace)).Button = (function(_super) {
+  var exclusiveClass;
+
+  __extends(Button, _super);
+
+  Button.prototype.BLOCK = "btn-block";
+
+  Button.prototype.options = {
+    DANGER: "btn-danger",
+    DEFAULT: "",
+    INFO: "btn-info",
+    LINK: "btn-link",
+    PRIMARY: "btn-primary",
+    SUCCESS: "btn-success",
+    WARNING: "btn-warning",
+    toArray: function() {
+      var style, _results;
+      _results = [];
+      for (style in Button.prototype.options) {
+        if (style !== "toArray") {
+          _results.push(Button.prototype.options[style]);
+        }
+      }
+      return _results;
+    }
+  };
+
+  Button.prototype.sizes = {
+    DEFAULT: "",
+    EXTRASMALL: "btn-xs",
+    LARGE: "btn-lg",
+    SMALL: "btn-sm",
+    toArray: function() {
+      var size, _results;
+      _results = [];
+      for (size in Button.prototype.sizes) {
+        if (size !== "toArray") {
+          _results.push(Button.prototype.sizes[size]);
+        }
+      }
+      return _results;
+    }
+  };
+
+  function Button() {
+    var args,
+      _this = this;
+    args = Array.prototype.slice.call(arguments);
+    if (args[0] == null) {
+      args[0] = "<button />";
+      args[1] = {
+        type: "button"
+      };
+    }
+    Button.__super__.constructor.apply(this, args);
+    this.size = function() {
+      return Button.prototype.size.apply(_this, arguments);
+    };
+    this.addClass("btn");
+  }
+
+  Button.prototype.block = function(block) {
+    if (block == null) {
+      block = true;
+    }
+    if (block === false) {
+      return this.removeClass(Button.prototype.BLOCK);
+    } else {
+      return this.addClass(Button.prototype.BLOCK);
+    }
+  };
+
+  Button.prototype.danger = function() {
+    return this.option(Button.prototype.options.DANGER);
+  };
+
+  Button.prototype.defaultSize = function() {
+    return this.size(Button.prototype.sizes.DEFAULT);
+  };
+
+  Button.prototype.defaultStyle = function() {
+    return this.option();
+  };
+
+  exclusiveClass = function(style, classes) {
+    if (style == null) {
+      style = "";
+    }
+    this.removeClass(classes.join(" "));
+    if (__indexOf.call(classes, style) >= 0) {
+      return this.addClass(style);
+    } else {
+      return this;
+    }
+  };
+
+  Button.prototype.extraSmall = function() {
+    return this.size(Button.prototype.sizes.EXTRASMALL);
+  };
+
+  Button.prototype.info = function() {
+    return this.option(Button.prototype.options.INFO);
+  };
+
+  Button.prototype.large = function() {
+    return this.size(Button.prototype.sizes.LARGE);
+  };
+
+  Button.prototype.link = function() {
+    return this.option(Button.prototype.options.LINK);
+  };
+
+  Button.prototype.option = function(emphasis) {
+    if (emphasis == null) {
+      emphasis = "";
+    }
+    return exclusiveClass.call(this, emphasis, Button.prototype.options.toArray());
+  };
+
+  Button.prototype.primary = function() {
+    return this.option(Button.prototype.options.PRIMARY);
+  };
+
+  Button.prototype.size = function() {
+    if (arguments[0] != null) {
+      return exclusiveClass.call(this, arguments[0], Button.prototype.sizes.toArray());
+    } else {
+      return this.length;
+    }
+  };
+
+  Button.prototype.small = function() {
+    return this.size(Button.prototype.sizes.SMALL);
+  };
+
+  Button.prototype.success = function() {
+    return this.option(Button.prototype.options.SUCCESS);
+  };
+
+  Button.prototype.warning = function() {
+    return this.option(Button.prototype.options.WARNING);
+  };
+
+  return Button;
+
+})(baseClass);
 
 (namespace(cssNamespace)).Code = (function(_super) {
   var addItem;
