@@ -2,8 +2,7 @@
     set += ": ";
     test(set + "Test btn class added", function() {
         var $elements;
-        $elements = new Button("<a>");
-        $elements.add(new Button("<button>")).add(new Button("<input>"));
+        $elements = new Button($("<a>").add("<button>").add("<input>"));
         
         ok($elements.hasClass("btn"), "Buttons should be of the btn class");
     });
@@ -62,5 +61,26 @@
         
         button.block();
         equal(button.attr("class"), "btn " + button.BLOCK, "Block level button should be of the btn and '" + button.BLOCK + "' classes only");
+    });
+    
+    test(set + "Test disable <button> and <input> elements", function() {
+        var buttons, hasClass;
+                
+        buttons = new Button($("<button>").add("<input>"));
+        hasClass = false;
+        buttons.disable();
+        equal(buttons.attr("disabled"), "disabled", "Disabled elements should have the disabled attribute value of 'disabled'");
+        buttons.map(function() {
+            hasClass = hasClass || $(this).hasClass(Button.prototype.DISABLED);
+        });
+        equal(hasClass, false, "Elements should not be of the '" + Button.prototype.DISABLED + "' class");
+    });
+    
+    test(set + "Test disable <a> element", function() {
+        var button = new Button("<a>");
+        
+        button.disable();
+        ok(button.attr("disabled") === undefined, "Disabled anchor elements should not have the disabled attribute");
+        ok(button.hasClass(button.DISABLED), "Disabled anchor elements should be of the '" + button.DISABLED + "' class");
     });
 })(uk.co.stevenmeyer.bootstrap.css.Button, "css.Button");

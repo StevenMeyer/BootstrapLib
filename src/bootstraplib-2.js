@@ -90,6 +90,8 @@ baseClass = (namespace(baseNamespace)).Bootstrap = (function(_super) {
 
   Button.prototype.BLOCK = "btn-block";
 
+  Button.prototype.DISABLED = "disabled";
+
   Button.prototype.options = {
     DANGER: "btn-danger",
     DEFAULT: "",
@@ -165,6 +167,19 @@ baseClass = (namespace(baseNamespace)).Bootstrap = (function(_super) {
 
   Button.prototype.defaultStyle = function() {
     return this.option();
+  };
+
+  Button.prototype.disable = function() {
+    return this.each(function(index, DOMElement) {
+      var $element;
+      $element = $(DOMElement);
+      if (!$element.is("a")) {
+        $element.attr("disabled", "disabled");
+      }
+      if (!$element.is("button,input")) {
+        return $element.addClass(Button.prototype.DISABLED);
+      }
+    });
   };
 
   exclusiveClass = function(style, classes) {

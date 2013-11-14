@@ -65,6 +65,7 @@ baseClass = class (namespace baseNamespace).Bootstrap extends $
 #no dependencies
 class (namespace cssNamespace).Button extends baseClass
     BLOCK: "btn-block"
+    DISABLED: "disabled"
 
     options:
         DANGER:  "btn-danger"
@@ -109,6 +110,12 @@ class (namespace cssNamespace).Button extends baseClass
         
     defaultStyle: () ->
         @option()
+        
+    disable: () ->
+        @each (index, DOMElement) ->
+            $element = $ DOMElement
+            $element.attr "disabled", "disabled" if not $element.is "a"
+            $element.addClass Button::DISABLED if not $element.is "button,input"
         
     exclusiveClass = (style = "", classes) ->
         @removeClass classes.join " "
