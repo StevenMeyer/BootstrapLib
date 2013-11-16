@@ -83,4 +83,60 @@
         ok(button.attr("disabled") === undefined, "Disabled anchor elements should not have the disabled attribute");
         ok(button.hasClass(button.DISABLED), "Disabled anchor elements should be of the '" + button.DISABLED + "' class");
     });
+    
+    test(set + "Test set text", function() {
+        var anotherButton, buttons, functionExpectedValue, oldText, text;
+        
+        oldText = "Hello, tester!";
+        text = "Hello, world!";
+        buttons = new Button(
+            $("<button>")
+                .add("<input type='button'>")
+                .add("<input type='submit'>")
+                .add("<input type='reset'>")
+                .add("<input type='text'>")); //not a real button
+        anotherButton = new Button("<button>" + oldText + "</button>");
+    
+        buttons.text(text);
+        //.eq() returns a jQuery object, so no worries about the Button.prototype.text() calls, here!
+        equal(buttons.eq(0).text(), text, "<button> element should have text() set to " + text);
+        equal(buttons.eq(0).attr("value"), undefined, "<button> element should not have the value attribute set");
+        equal(buttons.eq(1).text(), "", "<input> button element should have text() set to an empty string");
+        equal(buttons.eq(1).attr("value"), text, "<input> button element should have the value attribute set to " + text);
+        equal(buttons.eq(2).text(), "", "<input> submit element should have text() set to an empty string");
+        equal(buttons.eq(2).attr("value"), text, "<input> submit element should have the value attribute set to " + text);
+        equal(buttons.eq(3).text(), "", "<input> reset element should have text() set to an empty string");
+        equal(buttons.eq(3).attr("value"), text, "<input> reset element should have the value attribute set to " + text);
+        equal(buttons.eq(4).text(), text, "<input> text (not a button) element should have text() set to " + text);
+        equal(buttons.eq(4).attr("value"), undefined, "<input> text (not a button) element should not have the value attribute set");
+        
+        anotherButton.text(function(index, old) {
+            return "" + text + "-" + index + "-" + old;
+        });
+        functionExpectedValue = "" + text + "-0-" + oldText;
+        equal($.fn.text.apply(anotherButton, []), functionExpectedValue, "Setting text with this function should return '" + functionExpectedValue + "' for text()");
+    });
+    
+    test(set + "Test get text", function() {
+        var buttons, text;
+        
+        text = "Hello, world, again!";
+        buttons = {
+            button: new Button("<button>" + text + "</button>"),
+            input: {
+                button: new Button("<input type='button' value='" + text + "'>"),
+                submit: new Button("<input type='submit' value='" + text + "'>"),
+                reset: new Button("<input type='reset' value='" + text + "'>"),
+                notAButton: new Button("<input type='text' value='" + text + "'>")
+            },
+            anchor: new Button("<a>" + text + "</a>")
+        };
+        
+        equal(buttons.button.text(), text, "<button> element should have text() return '" + text + "'");
+        equal(buttons.input.button.text(), text, "<input> button element should have text() return '" + text + "'");
+        equal(buttons.input.submit.text(), text, "<input> submit element should have text() return '" + text + "'");
+        equal(buttons.input.reset.text(), text, "<input> reset element should have text() return '" + text + "'");
+        equal(buttons.input.notAButton.text(), "", "<input> text (not a button) element should have text() return an empty string");
+        equal(buttons.anchor.text(), text, "<a> element should have text() return '" + text + "'");
+    });
 })(uk.co.stevenmeyer.bootstrap.css.Button, "css.Button");

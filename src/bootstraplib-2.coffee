@@ -66,6 +66,12 @@ baseClass = class (namespace baseNamespace).Bootstrap extends $
 class (namespace cssNamespace).Button extends baseClass
     BLOCK: "btn-block"
     DISABLED: "disabled"
+    inputButtonTypes:
+        BUTTON: "button"
+        RESET: "reset"
+        SUBMIT: "submit"
+        toArray: () ->
+            Button::inputButtonTypes[type] for type of Button::inputButtonTypes when type isnt "toArray"
 
     options:
         DANGER:  "btn-danger"
@@ -94,6 +100,7 @@ class (namespace cssNamespace).Button extends baseClass
                 type: "button"
         Button.__super__.constructor.apply this, args
         @size = () => Button::size.apply this, arguments
+        @text = () => Button::text.apply this, arguments
         @addClass "btn"
         
     block: (block = true) ->
@@ -124,6 +131,19 @@ class (namespace cssNamespace).Button extends baseClass
     extraSmall: () ->
         @size Button::sizes.EXTRASMALL
         
+    getText = () ->
+        if @is "input"
+            types = Button::inputButtonTypes.toArray()
+            @map (index, DOMElement) ->
+                $element = $ DOMElement
+                if ($element.is "input") and ($element.attr "type") in types
+                    $element.val()
+                else
+                    $element.text()
+            .get().join()
+        else
+            $.fn.text.apply this, []
+        
     info: () ->
         @option Button::options.INFO
         
@@ -139,6 +159,24 @@ class (namespace cssNamespace).Button extends baseClass
     primary: () ->
         @option Button::options.PRIMARY
         
+    setText = (text) ->
+        if @is "input"
+            types = Button::inputButtonTypes.toArray()
+            @each (index, DOMElement) ->
+                $element = $ DOMElement
+                # cannot just have $element.val(text), here:
+                # if text were a function, then this @each loop would cause
+                # such a function to have an index value of 0 on every execution
+                # because $element is just one item (instead of all of the items
+                # in 'this').
+                value = if typeof text is "function" then text.call DOMElement, index, $element.text() else text
+                if ($element.is "input") and ($element.attr "type") in types
+                    $element.val value
+                else
+                    $element.text value
+        else
+            $.fn.text.call this, text
+        
     size: () ->
         if arguments[0]?
             exclusiveClass.call this, arguments[0], Button::sizes.toArray()
@@ -150,6 +188,12 @@ class (namespace cssNamespace).Button extends baseClass
         
     success: () ->
         @option Button::options.SUCCESS
+        
+    text: () ->
+        if arguments[0]?
+            setText.apply this, arguments
+        else
+            getText.apply this, arguments
         
     warning: () ->
         @option Button::options.WARNING
