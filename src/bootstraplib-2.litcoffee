@@ -1,66 +1,74 @@
-###
- *      Author: Steven Meyer <svm9@aber.ac.uk>
- *        File: bootstrap.coffee
- * Description: Scriptable Twitter Bootstrap widgets and component creation.
- *
- * DO NOT EDIT THE JAVASCRIPT .js FILE DIRECTLY.
- * THE JAVASCRIPT IS GENERATED FROM COFFEESCRIPT.
-###
+# BootstrapLib
+==============
+Scriptable Twitter Bootstrap widgets and component creation.
 
+# Namespace
+The objects in this library make use of namespaces to avoid conflicts.
 
-# [namespace.coffee](http://github.com/CodeCatalyst/namespace.coffee) v1.0.1
-# Copyright (c) 2011-2012 [CodeCatalyst, LLC](http://www.codecatalyst.com/).
-# Open source under the [MIT License](http://en.wikipedia.org/wiki/MIT_License).
+This library uses [namespace.coffee](http://github.com/CodeCatalyst/namespace.coffee)
+v1.0.1 by [CodeCatalyst, LLC](http://www.codecatalyst.com/). Namespace.coffee is
+open source and licensed under the [MIT licence](http://en.wikipedia.org/wiki/MIT_License).
 
-# A lean namespace implementation for JavaScript written in [CoffeeScript](http://coffeescript.com/).
+Namespace is a lean namespace implementation for JavaScript written in
+[CoffeeScript](http://coffeescript.com/).
 
-# *Export the specified value(s) to the specified package name.*
-window.namespace or= ( name, values ) ->
-	# Export to `exports` for node.js or `window` for the browser.
-	target = exports ? window
-	# Nested packages may be specified using dot-notation, and are automatically created as needed.
-	if name.length > 0
-		target = target[ subpackage ] ||= {} for subpackage in name.split( '.' ) 
-	# Export each value in the specified values Object to the specified package name by the value's key.
-	target[ key ] = value for key, value of values
-	# Return a reference to the specified namespace.
-	return target
+    window.namespace or= ( name, values ) ->
+        target = exports ? window
+        if name.length > 0
+            target = target[ subpackage ] ||= {} for subpackage in name.split( '.' ) 
+        target[ key ] = value for key, value of values
+        return target
 
-# *Export the namespace function to global scope, using itself.*
-namespace( '', namespace: namespace )
-
-isDOMNode = (node) ->
-    if typeof Node is "object"
-        node instanceof Node
-    else
-        node? and typeof node is "object" and typeof node.nodeType is "number" and typeof node.nodeName is "string"
-        
-getRenderedCSS = (element, key) ->
-    if element not instanceof jQuery
-        element = jQuery element
-    if element.length isnt 0
-        value = element.css key
-        if value is ""
-            # element hasn't been added to DOM and has no style set
-            $body = $ "body"
-            $temp = element.clone()
-            $body.append $temp
-            value = $temp.css key
-            $temp.remove()
-    value
+    namespace( '', namespace: namespace )
     
-$ = jQuery
-baseNamespace = "uk.co.stevenmeyer.bootstrap"
-cssNamespace = "#{baseNamespace}.css"
+# Utility functions
+These functions are used internally.
 
-baseClass = class (namespace baseNamespace).Bootstrap extends $
-    constructor: () ->
-        $jQuery = $.apply this, arguments
-        $.extend this, $jQuery
-        this
+This function returns true if the node is a DOM Node object
+    isDOMNode = (node) ->
+        if typeof Node is "object"
+            node instanceof Node
+        else
+            node? and typeof node is "object" and typeof node.nodeType is "number" and typeof node.nodeName is "string"
+
+This function retrieves the CSS value for a given key even for elements which
+are not part of the DOM.
+    getRenderedCSS = (element, key) ->
+        if element not instanceof jQuery
+            element = jQuery element
+        if element.length isnt 0
+            value = element.css key
+            if value is ""
+                # element hasn't been added to DOM and has no style set
+                $body = $ "body"
+                $temp = element.clone()
+                $body.append $temp
+                value = $temp.css key
+                $temp.remove()
+        value
         
-    toString: () ->
-        $("<p />").append(@clone()).html()
+# Library variables
+These variables tie jQuery to the $ symbol and set the namespace "packages"
+    
+    $ = jQuery
+    baseNamespace = "uk.co.stevenmeyer.bootstrap"
+    cssNamespace = "#{baseNamespace}.css"
+    
+# Classes
+These classes are available to assist in building elements for use with Twitter
+Bootstrap
+
+## Base class
+This probably won't be useful on its own and should be thought of as an abstract
+class
+    baseClass = class (namespace baseNamespace).Bootstrap extends $
+        constructor: () ->
+            $jQuery = $.apply this, arguments
+            $.extend this, $jQuery
+            this
+
+        toString: () ->
+            $("<p />").append(@clone()).html()
         
 #no dependencies
 class (namespace cssNamespace).Button extends baseClass
