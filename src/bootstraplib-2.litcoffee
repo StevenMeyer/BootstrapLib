@@ -60,6 +60,7 @@ Namespace is a lean namespace implementation for JavaScript written in
 These functions are used internally.
 
 This function returns true if the node is a DOM Node object
+
     isDOMNode = (node) ->
         if typeof Node is "object"
             node instanceof Node
@@ -68,6 +69,7 @@ This function returns true if the node is a DOM Node object
 
 This function retrieves the CSS value for a given key even for elements which
 are not part of the DOM.
+
     getRenderedCSS = (element, key) ->
         if element not instanceof jQuery
             element = jQuery element
