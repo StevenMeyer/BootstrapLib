@@ -2,6 +2,40 @@
 ==============
 Scriptable Twitter Bootstrap widgets and component creation.
 
+This document is [literate CoffeeScript](http://coffeescript.org/#literate). It
+is valid Markdown and valid CoffeeScript, producing source code which is both
+readable (the markdown can be rendered) and executable.
+
+Objects created from the classes herein are jQuery objects with some added
+functionality. Unlike a jQuery plugin, this library does not alter jQuery.
+The extra and changed functionality is added to the objects, rather than the
+jQuery object itself, just as one would expect in an object-oriented language.
+
+These classes add useful features to hopefully make repetitive or inconsistent
+tasks simpler.
+
+For example, to change the appearance of a button in jQuery:
+```
+$("#myButton").removeClass("btn-primary").addClass("btn-success");
+```
+
+The same operation with a BootstrapLib object
+```
+Button("#myButton").success();
+```
+While this may not seem like much, the BootstrapLib function does not need to
+know which classes to remove; it will sort this out for you. This is useful when
+you cannot know the current state of the button.
+
+* [Namespace](#namespace)
+* [Utility Functions](#utilityFunctions)
+* [Library Variables](#libraryVariables)
+* [Classes](#classes)
+  * [Base Class](#classes-baseClass)
+  * [CSS Components](#classes-cssElements)
+    * [Buttons](#classes-cssElements-buttons)
+
+<a id="namespace"></a>
 # Namespace
 The objects in this library make use of namespaces to avoid conflicts.
 
@@ -21,6 +55,7 @@ Namespace is a lean namespace implementation for JavaScript written in
 
     namespace( '', namespace: namespace )
     
+<a id="utilityFunctions"></a>
 # Utility functions
 These functions are used internally.
 
@@ -47,20 +82,35 @@ are not part of the DOM.
                 $temp.remove()
         value
         
-# Library variables
+<a id="libraryVariables"></a>
+# Library Variables
 These variables tie jQuery to the $ symbol and set the namespace "packages"
     
     $ = jQuery
     baseNamespace = "uk.co.stevenmeyer.bootstrap"
     cssNamespace = "#{baseNamespace}.css"
     
+<a id="classes"></a>
 # Classes
 These classes are available to assist in building elements for use with Twitter
 Bootstrap
 
+* [Base Class](#classes-baseClass)
+* [CSS Components](#classes-cssElements)
+  * [Buttons](#classes-cssElements-buttons)
+
+<a id="classes-baseClass"></a>
 ## Base class
-This probably won't be useful on its own and should be thought of as an abstract
-class
+This probably will not be useful on its own and should be thought of as an abstract
+class.
+
+It overrides the `toString` method to return the HTML of the element(s) including
+the outermost tags.
+
+The constructor allows objects to be created using the jQuery syntax. Arguments
+which would be used with $() to create jQuery objects can be used to create
+BootstrapLib objects.
+
     baseClass = class (namespace baseNamespace).Bootstrap extends $
         constructor: () ->
             $jQuery = $.apply this, arguments
@@ -70,141 +120,214 @@ class
         toString: () ->
             $("<p />").append(@clone()).html()
         
-#no dependencies
-class (namespace cssNamespace).Button extends baseClass
-    BLOCK: "btn-block"
-    DISABLED: "disabled"
-    inputButtonTypes:
-        BUTTON: "button"
-        RESET: "reset"
-        SUBMIT: "submit"
-        toArray: () ->
-            Button::inputButtonTypes[type] for type of Button::inputButtonTypes when type isnt "toArray"
+<a id="classes-cssElements"></a>
+## CSS Elements
+These are elements which are listed on the CSS section of the Bootstrap documentation.
 
-    options:
-        DANGER:  "btn-danger"
-        DEFAULT: ""
-        INFO:    "btn-info"
-        LINK:    "btn-link"
-        PRIMARY: "btn-primary"
-        SUCCESS: "btn-success"
-        WARNING: "btn-warning"
-        toArray: () ->
-            Button::options[style] for style of Button::options when style isnt "toArray"
+* [Buttons](#classes-cssElements-buttons)
+
+<a id="classes-cssElements-buttons"></a>
+### Buttons ###
+Clickable things.
+
+    class (namespace cssNamespace).Button extends baseClass
+
+#### Static members
+These members are Bootstrap classes used to change the appearance of the buttons.
+
+        BLOCK: "btn-block"
+        DISABLED: "disabled"
+
+        options:
+            DANGER:  "btn-danger"
+            DEFAULT: ""
+            INFO:    "btn-info"
+            LINK:    "btn-link"
+            PRIMARY: "btn-primary"
+            SUCCESS: "btn-success"
+            WARNING: "btn-warning"
+            toArray: () ->
+                Button::options[style] for style of Button::options when style isnt "toArray"
+
+        sizes:
+            DEFAULT: ""
+            EXTRASMALL: "btn-xs"
+            LARGE: "btn-lg"
+            SMALL: "btn-sm"
+            toArray: () ->
+                Button::sizes[size] for size of Button::sizes when size isnt "toArray"
+
+However, these are the type attribute values for those `<input>` elements which
+appear as buttons.
             
-    sizes:
-        DEFAULT: ""
-        EXTRASMALL: "btn-xs"
-        LARGE: "btn-lg"
-        SMALL: "btn-sm"
-        toArray: () ->
-            Button::sizes[size] for size of Button::sizes when size isnt "toArray"
+        inputButtonTypes:
+            BUTTON: "button"
+            RESET: "reset"
+            SUBMIT: "submit"
+            toArray: () ->
+                Button::inputButtonTypes[type] for type of Button::inputButtonTypes when type isnt "toArray"
+                
+#### Constructor
+If no arguments are given, then a `<button>` element is created. The `btn` class
+is also added to all elements.
     
-    constructor: () ->
-        args = Array::slice.call arguments
-        if not args[0]?
-            args[0] = "<button />"
-            args[1] =
-                type: "button"
-        Button.__super__.constructor.apply this, args
-        @size = () => Button::size.apply this, arguments
-        @text = () => Button::text.apply this, arguments
-        @addClass "btn"
+        constructor: () ->
+            args = Array::slice.call arguments
+            if not args[0]?
+                args[0] = "<button />"
+                args[1] =
+                    type: "button"
+            Button.__super__.constructor.apply this, args
+            @size = () => Button::size.apply this, arguments
+            @text = () => Button::text.apply this, arguments
+            @addClass "btn"
+            
+#### Options 
+These methods quickly change the style of the button. They will unset any classes
+which are mutually exclusive.
         
-    block: (block = true) ->
-        if block is false
-            @removeClass Button::BLOCK
-        else
-            @addClass Button::BLOCK
+        danger: () ->
+            @option Button::options.DANGER
+
+        defaultStyle: () ->
+            @option()
+
+        info: () ->
+            @option Button::options.INFO
+
+        link: () ->
+            @option Button::options.LINK
+
+        primary: () ->
+            @option Button::options.PRIMARY
+
+        success: () ->
+            @option Button::options.SUCCESS
+
+        warning: () ->
+            @option Button::options.WARNING
+            
+The `option` method links these methods to the
+[`exclusiveClass`](#classes-cssElements-buttons-utilityMethods-exclusiveClass)
+utility method.
         
-    danger: () ->
-        @option Button::options.DANGER
+        option: (emphasis = "") ->
+            exclusiveClass.call this, emphasis, Button::options.toArray()
+            
+#### Sizes
+These methods quickly change the size of the button. They will unset any classes
+which are mutually exclusive.
         
-    defaultSize: () ->
-        @size Button::sizes.DEFAULT
+        defaultSize: () ->
+            @size Button::sizes.DEFAULT
+
+        extraSmall: () ->
+            @size Button::sizes.EXTRASMALL
+
+        large: () ->
+            @size Button::sizes.LARGE
+
+        small: () ->
+            @size Button::sizes.SMALL
+            
+The `size` method links these methods to the
+[`exclusiveClass`](#classes-cssElements-buttons-utilityMethods-exclusiveClass)
+utility method.
         
-    defaultStyle: () ->
-        @option()
+        size: () ->
+            if arguments[0]?
+                exclusiveClass.call this, arguments[0], Button::sizes.toArray()
+            else
+                @length # original, deprecated jQuery size() function
+                
+Block-level buttons can be created using the `block` method. Passing `false`
+(strict) will remove the class.
+
+        block: (block = true) ->
+            if block is false
+                @removeClass Button::BLOCK
+            else
+                @addClass Button::BLOCK
+                
+#### Disabled state
+Anchors, buttons and input buttons are disabled in different ways. This method
+unifies those ways.
         
-    disable: () ->
-        @each (index, DOMElement) ->
-            $element = $ DOMElement
-            $element.attr "disabled", "disabled" if not $element.is "a"
-            $element.addClass Button::DISABLED if not $element.is "button,input"
-        
-    exclusiveClass = (style = "", classes) ->
-        @removeClass classes.join " "
-        if style in classes then @addClass style else this
-        
-    extraSmall: () ->
-        @size Button::sizes.EXTRASMALL
-        
-    getText = () ->
-        if @is "input"
-            types = Button::inputButtonTypes.toArray()
-            @map (index, DOMElement) ->
-                $element = $ DOMElement
-                if ($element.is "input") and ($element.attr "type") in types
-                    $element.val()
-                else
-                    $element.text()
-            .get().join()
-        else
-            $.fn.text.apply this, []
-        
-    info: () ->
-        @option Button::options.INFO
-        
-    large: () ->
-        @size Button::sizes.LARGE
-        
-    link: () ->
-        @option Button::options.LINK
-        
-    option: (emphasis = "") ->
-        exclusiveClass.call this, emphasis, Button::options.toArray()
-        
-    primary: () ->
-        @option Button::options.PRIMARY
-        
-    setText = (text) ->
-        if @is "input"
-            types = Button::inputButtonTypes.toArray()
+        disable: () ->
             @each (index, DOMElement) ->
                 $element = $ DOMElement
-                # cannot just have $element.val(text), here:
-                # if text were a function, then this @each loop would cause
-                # such a function to have an index value of 0 on every execution
-                # because $element is just one item (instead of all of the items
-                # in 'this').
-                value = if typeof text is "function" then text.call DOMElement, index, $element.text() else text
-                if ($element.is "input") and ($element.attr "type") in types
-                    $element.val value
-                else
-                    $element.text value
-        else
-            $.fn.text.call this, text
+                $element.attr "disabled", "disabled" if not $element.is "a"
+                $element.addClass Button::DISABLED if not $element.is "button,input"
+                
+#### Element text
+The jQuery `text()` method gets or sets only the text between the opening and
+closing tags. `<input>` buttons get their button text from the `value` attribute.
+This method ensures that text() has the same effect with regards to the visible
+text in the button.
         
-    size: () ->
-        if arguments[0]?
-            exclusiveClass.call this, arguments[0], Button::sizes.toArray()
-        else
-            @length # original, deprecated jQuery size() function
+        text: () ->
+            if arguments[0]?
+                setText.apply this, arguments
+            else
+                getText.apply this, arguments
             
-    small: () ->
-        @size Button::sizes.SMALL
+The work is delegated to the utility methods
+[`getText`](#classes-cssElements-buttons-utilityMethods-getText) and
+[`setText`](#classes-cssElements-buttons-utilityMethods-setText).
+                
+#### Utility methods
+These functions are not accessible outside of the class.
+
+<a id="classes-cssElements-buttons-utilityMethods-exclusiveClass"></a>
+This function is used to simulate mutually exclusive classes. It will remove all
+classes in the `classes` array and add the class in `style`.
         
-    success: () ->
-        @option Button::options.SUCCESS
+        exclusiveClass = (style = "", classes) ->
+            @removeClass classes.join " "
+            if style in classes then @addClass style else this
         
-    text: () ->
-        if arguments[0]?
-            setText.apply this, arguments
-        else
-            getText.apply this, arguments
+<a id="classes-cssElements-buttons-utilityMethods-getText"></a>
+This function gets the text from all matching elements, but uses the buttons
+visible text as the value. This may come from the child text node or from the
+value attribute, depending on the element. The initial `@is()` check avoids the
+overhead added by this method if there are no input elements.
         
-    warning: () ->
-        @option Button::options.WARNING
+        getText = () ->
+            if @is "input"
+                types = Button::inputButtonTypes.toArray()
+                @map (index, DOMElement) ->
+                    $element = $ DOMElement
+                    if ($element.is "input") and ($element.attr "type") in types
+                        $element.val()
+                    else
+                        $element.text()
+                .get().join()
+            else
+                $.fn.text.apply this, []
+        
+<a id="classes-cssElements-buttons-utilityMethods-setText"></a>
+This function sets the text of all matching elements, but uses the buttons
+visible text as the destination. This may be the child text node or the
+value attribute, depending on the element. The initial `@is()` check avoids the
+overhead added by this method if there are no input elements.
+        
+        setText = (text) ->
+            if @is "input"
+                types = Button::inputButtonTypes.toArray()
+                @each (index, DOMElement) ->
+                    $element = $ DOMElement
+                    # cannot just have $element.val(text), here:
+                    # if text were a function, then this @each loop would cause
+                    # such a function to have an index value of 0 on every execution
+                    # because $element is just one item (instead of all of the items
+                    # in 'this').
+                    value = if typeof text is "function" then text.call DOMElement, index, $element.text() else text
+                    if ($element.is "input") and ($element.attr "type") in types
+                        $element.val value
+                    else
+                        $element.text value
+            else
+                $.fn.text.call this, text
         
 #no dependencies
 class (namespace cssNamespace).Code extends baseClass
