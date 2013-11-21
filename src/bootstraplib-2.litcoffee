@@ -2,8 +2,8 @@
 ==============
 Scriptable Twitter Bootstrap widgets and component creation.
 
-This document is [literate CoffeeScript](http://coffeescript.org/#literate). It
-is valid Markdown and valid CoffeeScript, producing source code which is both
+This source file is [literate CoffeeScript](http://coffeescript.org/#literate).
+It is valid Markdown and valid CoffeeScript, producing source code which is both
 readable (the markdown can be rendered) and executable.
 
 Objects created from the classes herein are jQuery objects with some added
@@ -28,14 +28,13 @@ know which classes to remove; it will sort this out for you. This is useful when
 you cannot know the current state of the button.
 
 * [Namespace](#namespace)
-* [Utility Functions](#utilityFunctions)
-* [Library Variables](#libraryVariables)
+* [Utility Functions](#utility-functions)
+* [Library Variables](#library-variables)
 * [Classes](#classes)
-  * [Base Class](#classes-baseClass)
-  * [CSS Components](#classes-cssElements)
-    * [Buttons](#classes-cssElements-buttons)
+  * [Base Class](#base-class)
+  * [CSS Components](#css-components)
+    * [Buttons](#buttons)
 
-<a id="namespace"></a>
 # Namespace
 The objects in this library make use of namespaces to avoid conflicts.
 
@@ -55,7 +54,6 @@ Namespace is a lean namespace implementation for JavaScript written in
 
     namespace( '', namespace: namespace )
     
-<a id="utilityFunctions"></a>
 # Utility functions
 These functions are used internally.
 
@@ -84,7 +82,6 @@ are not part of the DOM.
                 $temp.remove()
         value
         
-<a id="libraryVariables"></a>
 # Library Variables
 These variables tie jQuery to the $ symbol and set the namespace "packages"
     
@@ -92,7 +89,6 @@ These variables tie jQuery to the $ symbol and set the namespace "packages"
     baseNamespace = "uk.co.stevenmeyer.bootstrap"
     cssNamespace = "#{baseNamespace}.css"
     
-<a id="classes"></a>
 # Classes
 These classes are available to assist in building elements for use with Twitter
 Bootstrap
@@ -101,7 +97,6 @@ Bootstrap
 * [CSS Components](#classes-cssElements)
   * [Buttons](#classes-cssElements-buttons)
 
-<a id="classes-baseClass"></a>
 ## Base class
 This probably will not be useful on its own and should be thought of as an abstract
 class.
@@ -122,13 +117,12 @@ BootstrapLib objects.
         toString: () ->
             $("<p />").append(@clone()).html()
         
-<a id="classes-cssElements"></a>
 ## CSS Elements
 These are elements which are listed on the CSS section of the Bootstrap documentation.
 
-* [Buttons](#classes-cssElements-buttons)
+* [Buttons](#buttons)
+* [Code](#code)
 
-<a id="classes-cssElements-buttons"></a>
 ### Buttons ###
 Clickable things.
 
@@ -210,8 +204,7 @@ which are mutually exclusive.
             @option Button::options.WARNING
             
 The `option` method links these methods to the
-[`exclusiveClass`](#classes-cssElements-buttons-utilityMethods-exclusiveClass)
-utility method.
+`exclusiveClass` [utility method](#utility-methods).
         
         option: (emphasis = "") ->
             exclusiveClass.call this, emphasis, Button::options.toArray()
@@ -233,8 +226,7 @@ which are mutually exclusive.
             @size Button::sizes.SMALL
             
 The `size` method links these methods to the
-[`exclusiveClass`](#classes-cssElements-buttons-utilityMethods-exclusiveClass)
-utility method.
+`exclusiveClass` [utility method](#utility-methods).
         
         size: () ->
             if arguments[0]?
@@ -273,9 +265,8 @@ text in the button.
             else
                 getText.apply this, arguments
             
-The work is delegated to the utility methods
-[`getText`](#classes-cssElements-buttons-utilityMethods-getText) and
-[`setText`](#classes-cssElements-buttons-utilityMethods-setText).
+The work is delegated to the [utility methods](#utility-methods) `getText` and
+`setText`.
                 
 #### Utility methods
 These functions are not accessible outside of the class.
@@ -331,104 +322,143 @@ overhead added by this method if there are no input elements.
             else
                 $.fn.text.call this, text
         
-#no dependencies
-class (namespace cssNamespace).Code extends baseClass
-    constructor: () ->
-        args = Array::slice.call arguments
-        if not args[0]?
-            args[0] = $ "<code />"
-        Code.__super__.constructor.apply this, args
-        
-        @append = () => Code::append.apply this, arguments
-        @prepend = () => Code::prepend.apply this, arguments
-        this
-        
-    addItem = (op, items) ->
-        lastTry = (item) =>
-            $item = $ item
-            if $item
-                $.fn[op].call this, document.createTextNode $("<p />").append($item.clone()).html()
-            else
-                $.fn[op].call this, document.createTextNode "#{$item}"
-        for arg of items
-            if typeof items[arg] is "string"
-                $.fn[op].call this, document.createTextNode items[arg]
-            else if items[arg] instanceof $
-                $.fn[op].call this, document.createTextNode $("<p>").append(items[arg].clone()).html()
-            else if items[arg] instanceof Array
-                Code::[op].apply this, items[arg]
-            else if typeof items[arg] is "function"
-                Code::[op].call this, items[arg].call this, 0, @html()
-            else if isDOMNode items[arg]
-                switch items[arg].nodeType
-                    when 1, 9, 11
-                        $.fn[op].call this, document.createTextNode $("<p>").append(items[arg]).html()
-                    when 3 then $.fn[op].call this, items[arg]
-                    else lastTry items[arg]
-            else
-                lastTry items[arg]
-        this
-                
-    append: () ->
-        args = Array::slice.call arguments
-        addItem.call this, "append", args
-        
-    appendHTML: () ->
-        $.fn.append.apply this, arguments
-        
-    isBlock: () ->
-        display = getRenderedCSS this, "display"
-        switch display
-            when "block", "inline-block", "list-item", "table", "table-caption", "table-row"
-                true
-            else false
+### Code ###
+Display code in an element.
+
+This object is designed to display every appended (or prepended) item as plain
+text. Adding HTML elements to it should display all of the HTML including the
+outer tags, for example.
+
+    class (namespace cssNamespace).Code extends baseClass
     
-    isInline: () ->
-        display = getRenderedCSS this, "display"
-        switch display
-            when "inline", "inline-table", "table-cell", "table-column"
-                true
-            else false
+#### Constructor
+If no arguments are given, then a `<code>` element is created.
+
+        constructor: () ->
+            args = Array::slice.call arguments
+            if not args[0]?
+                args[0] = $ "<code />"
+            Code.__super__.constructor.apply this, args
+
+            @append = () => Code::append.apply this, arguments
+            @prepend = () => Code::prepend.apply this, arguments
+            this
+            
+#### DOM Insertion, Inside
+Inserting inside the element should always behave as if inserting text nodes.
+The `append()` and `prepend()` functions should not insert HTML.
+                
+        append: () ->
+            args = Array::slice.call arguments
+            addItem.call this, "append", args
+
+        prepend: () ->
+            args = Array::slice.call arguments
+            addItem.call this, "prepend", args
+            
+The `append()` and `prepend()` functions call the `addItem()` private method.
+This method tries to turn the arguments into suitable text nodes. The odd one out
+is in trying to add jQuery objects. These should have their contents added as text,
+including their outermost tags.
         
-    prepend: () ->
-        args = Array::slice.call arguments
-        addItem.call this, "prepend", args
+        addItem = (op, items) ->
+            lastTry = (item) =>
+                $item = $ item
+                if $item
+                    $.fn[op].call this, document.createTextNode $("<p />").append($item.clone()).html()
+                else
+                    $.fn[op].call this, document.createTextNode "#{$item}"
+            for arg of items
+                if typeof items[arg] is "string"
+                    $.fn[op].call this, document.createTextNode items[arg]
+                else if items[arg] instanceof $
+                    $.fn[op].call this, document.createTextNode $("<p>").append(items[arg].clone()).html()
+                else if items[arg] instanceof Array
+                    Code::[op].apply this, items[arg]
+                else if typeof items[arg] is "function"
+                    Code::[op].call this, items[arg].call this, 0, @html()
+                else if isDOMNode items[arg]
+                    switch items[arg].nodeType
+                        when 1, 9, 11
+                            $.fn[op].call this, document.createTextNode $("<p>").append(items[arg]).html()
+                        when 3 then $.fn[op].call this, items[arg]
+                        else lastTry items[arg]
+                else
+                    lastTry items[arg]
+            this
+            
+Methods to allow the use of the original, jQuery insertion methods:
         
-    prependHTML: () ->
-        $.fn.append.apply this, arguments
+        appendHTML: () ->
+            $.fn.append.apply this, arguments
+
+        prependHTML: () ->
+            $.fn.append.apply this, arguments
+            
+#### Code style
+Inline code should be `<code>` elements and block-level code should be `<pre>`
+elements. This class should work with anything, though, so it is desirable to
+find out the display-level of the element. It is a bit heavy, and is only used
+to determine whether to allow the `pre-scrollable` class to be added.
         
-    scrollable: (scroll) ->
-        className = "pre-scrollable"
-        if scroll is false
-            @removeClass className
-        else if @isBlock()
-            @addClass className
-        this
+        isBlock: () ->
+            display = getRenderedCSS this, "display"
+            switch display
+                when "block", "inline-block", "list-item", "table", "table-caption", "table-row"
+                    true
+                else false
+
+        isInline: () ->
+            display = getRenderedCSS this, "display"
+            switch display
+                when "inline", "inline-table", "table-cell", "table-column"
+                    true
+                else false
+                
+#### Scrollable
+It is possible to add the `pre-scrollable` class to `<pre>` elements to set a
+max-height and add a vertical scroll bar. This method should add it and allow it
+to be removed by passing `false` as an argument.
         
-class (namespace cssNamespace).Code.BlockCode extends (namespace cssNamespace).Code
-    constructor: () ->
-        args = Array::slice.call arguments
-        $element = $ "<pre />"
-        if args[0]?
-            if isDOMNode(args[0]) or typeof args[0] is "string" or args[0] instanceof $
-                args[0] = $element
+        scrollable: (scroll) ->
+            className = "pre-scrollable"
+            if scroll is false
+                @removeClass className
+            else if @isBlock()
+                @addClass className
+            this
+        
+#### Block code element
+A short-hand way to create a Code object which is pre-set to be a `<pre>` element.
+
+
+    class (namespace cssNamespace).Code.BlockCode extends (namespace cssNamespace).Code
+        constructor: () ->
+            args = Array::slice.call arguments
+            $element = $ "<pre />"
+            if args[0]?
+                if isDOMNode(args[0]) or typeof args[0] is "string" or args[0] instanceof $
+                    args[0] = $element
+                else
+                    args = args.unshift $element
             else
-                args = args.unshift $element
-        else
-            args[0] = $element
-        BlockCode.__super__.constructor.apply this, args
-        this
-        
-class (namespace cssNamespace).Code.InlineCode extends (namespace cssNamespace).Code
-    constructor: () ->
-        args = Array::slice.call arguments
-        $element = $ "<code />"
-        if args[0]?
-            if isDOMNode(args[0]) or typeof args[0] is "string" or args[0] instanceof $
                 args[0] = $element
+            BlockCode.__super__.constructor.apply this, args
+            this
+    
+#### Inline code element
+A short-hand way to create a Code object which is pre-set to be a `<code>` element.
+
+    class (namespace cssNamespace).Code.InlineCode extends (namespace cssNamespace).Code
+        constructor: () ->
+            args = Array::slice.call arguments
+            $element = $ "<code />"
+            if args[0]?
+                if isDOMNode(args[0]) or typeof args[0] is "string" or args[0] instanceof $
+                    args[0] = $element
+                else
+                    args = args.unshift $element
             else
-                args = args.unshift $element
-        else
-            args[0] = $element
-        InlineCode.__super__.constructor.apply this, args
-        this
+                args[0] = $element
+            InlineCode.__super__.constructor.apply this, args
+            this
