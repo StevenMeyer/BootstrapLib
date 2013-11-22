@@ -125,7 +125,6 @@ These are elements which are listed on the CSS section of the Bootstrap document
 * [Code](#code)
 
 ### Buttons ###
-===============
 Clickable things.
 
     class (namespace cssNamespace).Button extends baseClass
@@ -239,7 +238,7 @@ The `size` method links these methods to the
 Block-level buttons can be created using the `block` method. Passing `false`
 (strict) will remove the class.
 
-        block: (block = true) ->
+        block: (block) ->
             if block is false
                 @removeClass Button::BLOCK
             else
@@ -252,8 +251,8 @@ unifies those ways.
         disable: () ->
             @each (index, DOMElement) ->
                 $element = $ DOMElement
-                $element.attr "disabled", "disabled" if not $element.is "a"
-                $element.addClass Button::DISABLED if not $element.is "button,input"
+                $element.attr "disabled", "disabled" unless $element.is "a"
+                $element.addClass Button::DISABLED unless $element.is "button,input"
                 
 #### Element text
 The jQuery `text()` method gets or sets only the text between the opening and
@@ -323,9 +322,11 @@ overhead added by this method if there are no input elements.
                         $element.text value
             else
                 $.fn.text.call this, text
-        
-### Code ###
+
+[Back to CSS Components](#css-components)
+
 ============
+### Code ###
 Display code in an element.
 
 This object is designed to display every appended (or prepended) item as plain
@@ -333,6 +334,11 @@ text. Adding HTML elements to it should display all of the HTML including the
 outer tags, for example.
 
     class (namespace cssNamespace).Code extends baseClass
+    
+#### Static members
+This member is the bootstrap class to set a max-height and a vertical scroll bar.
+
+        SCROLLABLE: "pre-scrollable"
     
 #### Constructor
 If no arguments are given, then a `<code>` element is created.
@@ -424,11 +430,10 @@ max-height and add a vertical scroll bar. This method should add it and allow it
 to be removed by passing `false` as an argument.
         
         scrollable: (scroll) ->
-            className = "pre-scrollable"
             if scroll is false
-                @removeClass className
+                @removeClass Code::SCROLLABLE
             else if @isBlock()
-                @addClass className
+                @addClass Code::SCROLLABLE
             this
         
 #### Block code element
