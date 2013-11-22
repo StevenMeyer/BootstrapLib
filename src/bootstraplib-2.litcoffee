@@ -1,5 +1,4 @@
 # BootstrapLib
-==============
 Scriptable Twitter Bootstrap widgets and component creation.
 
 This source file is [literate CoffeeScript](http://coffeescript.org/#literate).
@@ -34,8 +33,9 @@ you cannot know the current state of the button.
   * [Base Class](#base-class)
   * [CSS Components](#css-components)
     * [Buttons](#buttons)
+    * [Code](#code)
 
-# Namespace
+# NAMESPACE
 The objects in this library make use of namespaces to avoid conflicts.
 
 This library uses [namespace.coffee](http://github.com/CodeCatalyst/namespace.coffee)
@@ -54,7 +54,7 @@ Namespace is a lean namespace implementation for JavaScript written in
 
     namespace( '', namespace: namespace )
     
-# Utility functions
+# UTILITY FUNCTIONS
 These functions are used internally.
 
 This function returns true if the node is a DOM Node object
@@ -82,22 +82,23 @@ are not part of the DOM.
                 $temp.remove()
         value
         
-# Library Variables
+# LIBRARY VARIABLES
 These variables tie jQuery to the $ symbol and set the namespace "packages"
     
     $ = jQuery
     baseNamespace = "uk.co.stevenmeyer.bootstrap"
     cssNamespace = "#{baseNamespace}.css"
     
-# Classes
+# CLASSES
 These classes are available to assist in building elements for use with Twitter
 Bootstrap
 
-* [Base Class](#classes-baseClass)
-* [CSS Components](#classes-cssElements)
-  * [Buttons](#classes-cssElements-buttons)
+* [Base Class](#base-class)
+* [CSS Components](#css-components)
+  * [Buttons](#buttons)
+  * [Code](#code)
 
-## Base class
+## Base Class
 This probably will not be useful on its own and should be thought of as an abstract
 class.
 
@@ -117,13 +118,14 @@ BootstrapLib objects.
         toString: () ->
             $("<p />").append(@clone()).html()
         
-## CSS Elements
+## CSS Components
 These are elements which are listed on the CSS section of the Bootstrap documentation.
 
 * [Buttons](#buttons)
 * [Code](#code)
 
 ### Buttons ###
+===============
 Clickable things.
 
     class (namespace cssNamespace).Button extends baseClass
@@ -204,7 +206,7 @@ which are mutually exclusive.
             @option Button::options.WARNING
             
 The `option` method links these methods to the
-`exclusiveClass` [utility method](#utility-methods).
+`exclusiveClass` [utility method](#button-utility-methods).
         
         option: (emphasis = "") ->
             exclusiveClass.call this, emphasis, Button::options.toArray()
@@ -226,7 +228,7 @@ which are mutually exclusive.
             @size Button::sizes.SMALL
             
 The `size` method links these methods to the
-`exclusiveClass` [utility method](#utility-methods).
+`exclusiveClass` [utility method](#button-utility-methods).
         
         size: () ->
             if arguments[0]?
@@ -265,13 +267,13 @@ text in the button.
             else
                 getText.apply this, arguments
             
-The work is delegated to the [utility methods](#utility-methods) `getText` and
-`setText`.
+The work is delegated to the [utility methods](#button-utility-methods) `getText`
+and `setText`.
                 
-#### Utility methods
+#### Button utility methods
 These functions are not accessible outside of the class.
 
-<a id="classes-cssElements-buttons-utilityMethods-exclusiveClass"></a>
+##### exclusiveClass()
 This function is used to simulate mutually exclusive classes. It will remove all
 classes in the `classes` array and add the class in `style`.
         
@@ -279,7 +281,7 @@ classes in the `classes` array and add the class in `style`.
             @removeClass classes.join " "
             if style in classes then @addClass style else this
         
-<a id="classes-cssElements-buttons-utilityMethods-getText"></a>
+##### getText()        
 This function gets the text from all matching elements, but uses the buttons
 visible text as the value. This may come from the child text node or from the
 value attribute, depending on the element. The initial `@is()` check avoids the
@@ -298,7 +300,7 @@ overhead added by this method if there are no input elements.
             else
                 $.fn.text.apply this, []
         
-<a id="classes-cssElements-buttons-utilityMethods-setText"></a>
+##### setText()
 This function sets the text of all matching elements, but uses the buttons
 visible text as the destination. This may be the child text node or the
 value attribute, depending on the element. The initial `@is()` check avoids the
@@ -323,6 +325,7 @@ overhead added by this method if there are no input elements.
                 $.fn.text.call this, text
         
 ### Code ###
+============
 Display code in an element.
 
 This object is designed to display every appended (or prepended) item as plain
