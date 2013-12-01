@@ -34,6 +34,14 @@ you cannot know the current state of the button.
   * [CSS Components](#css-components)
     * [Buttons](#buttons)
     * [Code](#code)
+    
+It is prudent to include a warning in the compiled JavaScript that the source is
+CoffeeScript to discourage the direct editing of the JS.
+
+    ### BootstrapLib compiled JavaScript source.
+     *
+     * DO NOT EDIT THE JAVASCRIPT .js FILE DIRECTLY.
+     * THE JAVASCRIPT IS GENERATED FROM COFFEESCRIPT.###
 
 # NAMESPACE
 The objects in this library make use of namespaces to avoid conflicts.
@@ -81,6 +89,12 @@ are not part of the DOM.
                 value = $temp.css key
                 $temp.remove()
         value
+        
+Often it is useful to get an array of the values of an object. This
+function is created to do that.
+
+    toArray = (object) ->
+        object[key] for own key of object
         
 # LIBRARY VARIABLES
 These variables tie jQuery to the $ symbol and set the namespace "packages"
@@ -143,16 +157,12 @@ These members are Bootstrap classes used to change the appearance of the buttons
             PRIMARY: "btn-primary"
             SUCCESS: "btn-success"
             WARNING: "btn-warning"
-            toArray: () ->
-                Button::options[style] for style of Button::options when style isnt "toArray"
 
         sizes:
             DEFAULT: ""
             EXTRASMALL: "btn-xs"
             LARGE: "btn-lg"
             SMALL: "btn-sm"
-            toArray: () ->
-                Button::sizes[size] for size of Button::sizes when size isnt "toArray"
 
 However, these are the type attribute values for those `<input>` elements which
 appear as buttons.
@@ -161,8 +171,6 @@ appear as buttons.
             BUTTON: "button"
             RESET: "reset"
             SUBMIT: "submit"
-            toArray: () ->
-                Button::inputButtonTypes[type] for type of Button::inputButtonTypes when type isnt "toArray"
                 
 #### Constructor
 If no arguments are given, then a `<button>` element is created. The `btn` class
@@ -208,7 +216,7 @@ The `option` method links these methods to the
 `exclusiveClass` [utility method](#button-utility-methods).
         
         option: (emphasis = "") ->
-            exclusiveClass.call this, emphasis, Button::options.toArray()
+            exclusiveClass.call this, emphasis, toArray Button::options
             
 #### Sizes
 These methods quickly change the size of the button. They will unset any classes
@@ -231,7 +239,7 @@ The `size` method links these methods to the
         
         size: () ->
             if arguments[0]?
-                exclusiveClass.call this, arguments[0], Button::sizes.toArray()
+                exclusiveClass.call this, arguments[0], toArray Button::sizes
             else
                 @length # original, deprecated jQuery size() function
                 
@@ -288,7 +296,7 @@ overhead added by this method if there are no input elements.
         
         getText = () ->
             if @is "input"
-                types = Button::inputButtonTypes.toArray()
+                types = toArray Button::inputButtonTypes
                 @map (index, DOMElement) ->
                     $element = $ DOMElement
                     if ($element.is "input") and ($element.attr "type") in types
@@ -307,7 +315,7 @@ overhead added by this method if there are no input elements.
         
         setText = (text) ->
             if @is "input"
-                types = Button::inputButtonTypes.toArray()
+                types = toArray Button::inputButtonTypes
                 @each (index, DOMElement) ->
                     $element = $ DOMElement
                     # cannot just have $element.val(text), here:
