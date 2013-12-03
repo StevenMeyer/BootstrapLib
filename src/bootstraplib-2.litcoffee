@@ -34,6 +34,7 @@ you cannot know the current state of the button.
   * [CSS Components](#css-components)
     * [Buttons](#buttons)
     * [Code](#code)
+    * [Forms](#forms)
     
 It is prudent to include a warning in the compiled JavaScript that the source is
 CoffeeScript to discourage the direct editing of the JS.
@@ -111,6 +112,7 @@ Bootstrap
 * [CSS Components](#css-components)
   * [Buttons](#buttons)
   * [Code](#code)
+  * [Forms](#forms)
 
 ## Base Class
 This probably will not be useful on its own and should be thought of as an abstract
@@ -123,7 +125,7 @@ The constructor allows objects to be created using the jQuery syntax. Arguments
 which would be used with $() to create jQuery objects can be used to create
 BootstrapLib objects.
 
-    baseClass = class (namespace baseNamespace).Bootstrap extends $
+    baseClass = class Bootstrap extends $
         constructor: () ->
             $jQuery = $.apply this, arguments
             $.extend this, $jQuery
@@ -131,17 +133,24 @@ BootstrapLib objects.
 
         toString: () ->
             $("<p />").append(@clone()).html()
+            
+### Export and namespace ###
+Export the base class to make it accessible outside of this function.
+
+    namespace baseNamespace, Bootstrap: Bootstrap
         
 ## CSS Components
 These are elements which are listed on the CSS section of the Bootstrap documentation.
 
 * [Buttons](#buttons)
 * [Code](#code)
+* [Forms](#forms)
+* [Export and namespace](#export-and-namespace-1)
 
 ### Buttons ###
 Clickable things.
 
-    class (namespace cssNamespace).Button extends baseClass
+    class Button extends baseClass
 
 #### Static members
 These members are Bootstrap classes used to change the appearance of the buttons.
@@ -341,7 +350,7 @@ This object is designed to display every appended (or prepended) item as plain
 text. Adding HTML elements to it should display all of the HTML including the
 outer tags, for example.
 
-    class (namespace cssNamespace).Code extends baseClass
+    class Code extends baseClass
     
 #### Static members
 This member is the bootstrap class to set a max-height and a vertical scroll bar.
@@ -448,7 +457,7 @@ to be removed by passing `false` as an argument.
 A short-hand way to create a Code object which is pre-set to be a `<pre>` element.
 
 
-    class (namespace cssNamespace).Code.BlockCode extends (namespace cssNamespace).Code
+    class Code.BlockCode extends Code
         constructor: () ->
             args = Array::slice.call arguments
             $element = $ "<pre />"
@@ -465,7 +474,7 @@ A short-hand way to create a Code object which is pre-set to be a `<pre>` elemen
 #### Inline code element
 A short-hand way to create a Code object which is pre-set to be a `<code>` element.
 
-    class (namespace cssNamespace).Code.InlineCode extends (namespace cssNamespace).Code
+    class Code.InlineCode extends Code
         constructor: () ->
             args = Array::slice.call arguments
             $element = $ "<code />"
@@ -478,3 +487,85 @@ A short-hand way to create a Code object which is pre-set to be a `<code>` eleme
                 args[0] = $element
             InlineCode.__super__.constructor.apply this, args
             this
+            
+[Back to CSS Components](#css-components)
+            
+=============
+### Forms ###
+We all know what web forms are.
+
+#### Form controls
+Methods for generating standard controls in Bootstrap.
+
+    class FormControls
+
+##### Input
+Input elements are of various types, namely: 
+* text
+* password
+* datetime
+* datetime-local
+* date
+* month
+* time
+* week
+* number
+* email
+* url
+* search
+* tel
+* color
+
+        inputTypes:
+            COLOR: "color"
+            DATE: "date"
+            DATETIME: "datetime"
+            DATETIMELOCAL: "datetime-local"
+            EMAIL: "email"
+            MONTH: "month"
+            NUMBER: "number"
+            PASSWORD: "password"
+            SEARCH: "search"
+            TEL: "tel"
+            TEXT: "text"
+            TIME: "time"
+            URL: "url"
+            WEEK: "week"
+            
+jQuery requires that elements being injected into documents other than the one into
+which the jQuery library is loaded be created using the ownerDocument parameter
+of the jQuery function. As this is unusual and optional in jQuery, so should it
+be optional, here. This method also has an optional id parameter, so it needs
+a complicated set of selector (if) statements to examine the arguments.
+
+        createInput: (type) ->
+            types = toArray FormControls::inputTypes
+            if type not in types
+                type = FormControls::inputTypes.TEXT
+            if arguments.length > 1
+                id = null
+                ownerDocument = null
+                if typeof arguments[1] is "string"
+                    id = arguments[1]
+                else if arguments[1] instanceof Document
+                    ownerDocument = arguments[1]
+                if arguments[2] and arguments[2] instanceof Document
+                    ownerDocument = arguments[2]
+                if ownerDocument
+                    $element = $("<input />", ownerDocument)
+                else
+                    $element = $ "<input />"
+                if id
+                    $element.attr "id", id
+                $element.attr "type", type
+            else
+                $("<input />").attr "type", type
+
+### Export and namespace ###
+These classes all exist within the enclosing function, so export them.
+
+    namespace cssNamespace,
+        Button: Button
+        Code: Code
+        forms:
+            FormControls: FormControls

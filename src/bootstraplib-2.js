@@ -6,7 +6,7 @@
 
 
 (function() {
-  var $, baseClass, baseNamespace, cssNamespace, getRenderedCSS, isDOMNode, toArray,
+  var $, Bootstrap, Button, Code, FormControls, baseClass, baseNamespace, cssNamespace, getRenderedCSS, isDOMNode, toArray,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
@@ -74,7 +74,7 @@
 
   cssNamespace = "" + baseNamespace + ".css";
 
-  baseClass = (namespace(baseNamespace)).Bootstrap = (function(_super) {
+  baseClass = Bootstrap = (function(_super) {
     __extends(Bootstrap, _super);
 
     function Bootstrap() {
@@ -92,7 +92,11 @@
 
   })($);
 
-  (namespace(cssNamespace)).Button = (function(_super) {
+  namespace(baseNamespace, {
+    Bootstrap: Bootstrap
+  });
+
+  Button = (function(_super) {
     var exclusiveClass, getText, setText;
 
     __extends(Button, _super);
@@ -285,7 +289,7 @@
 
   })(baseClass);
 
-  (namespace(cssNamespace)).Code = (function(_super) {
+  Code = (function(_super) {
     var addItem;
 
     __extends(Code, _super);
@@ -413,7 +417,7 @@
 
   })(baseClass);
 
-  (namespace(cssNamespace)).Code.BlockCode = (function(_super) {
+  Code.BlockCode = (function(_super) {
     __extends(BlockCode, _super);
 
     function BlockCode() {
@@ -435,9 +439,9 @@
 
     return BlockCode;
 
-  })((namespace(cssNamespace)).Code);
+  })(Code);
 
-  (namespace(cssNamespace)).Code.InlineCode = (function(_super) {
+  Code.InlineCode = (function(_super) {
     __extends(InlineCode, _super);
 
     function InlineCode() {
@@ -459,6 +463,69 @@
 
     return InlineCode;
 
-  })((namespace(cssNamespace)).Code);
+  })(Code);
+
+  FormControls = (function() {
+    function FormControls() {}
+
+    FormControls.prototype.inputTypes = {
+      COLOR: "color",
+      DATE: "date",
+      DATETIME: "datetime",
+      DATETIMELOCAL: "datetime-local",
+      EMAIL: "email",
+      MONTH: "month",
+      NUMBER: "number",
+      PASSWORD: "password",
+      SEARCH: "search",
+      TEL: "tel",
+      TEXT: "text",
+      TIME: "time",
+      URL: "url",
+      WEEK: "week"
+    };
+
+    FormControls.prototype.createInput = function(type) {
+      var $element, id, ownerDocument, types;
+      types = toArray(FormControls.prototype.inputTypes);
+      if (__indexOf.call(types, type) < 0) {
+        type = FormControls.prototype.inputTypes.TEXT;
+      }
+      if (arguments.length > 1) {
+        id = null;
+        ownerDocument = null;
+        if (typeof arguments[1] === "string") {
+          id = arguments[1];
+        } else if (arguments[1] instanceof Document) {
+          ownerDocument = arguments[1];
+        }
+        if (arguments[2] && arguments[2] instanceof Document) {
+          ownerDocument = arguments[2];
+        }
+        if (ownerDocument) {
+          $element = $("<input />", ownerDocument);
+        } else {
+          $element = $("<input />");
+        }
+        if (id) {
+          $element.attr("id", id);
+        }
+        return $element.attr("type", type);
+      } else {
+        return $("<input />").attr("type", type);
+      }
+    };
+
+    return FormControls;
+
+  })();
+
+  namespace(cssNamespace, {
+    Button: Button,
+    Code: Code,
+    forms: {
+      FormControls: FormControls
+    }
+  });
 
 }).call(this);
