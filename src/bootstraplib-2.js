@@ -1,7 +1,4 @@
-/*
- *      Author: Steven Meyer <svm9@aber.ac.uk>
- *        File: bootstrap.coffee
- * Description: Scriptable Twitter Bootstrap widgets and component creation.
+/* BootstrapLib compiled JavaScript source.
  *
  * DO NOT EDIT THE JAVASCRIPT .js FILE DIRECTLY.
  * THE JAVASCRIPT IS GENERATED FROM COFFEESCRIPT.
@@ -9,7 +6,7 @@
 
 
 (function() {
-  var $, baseClass, baseNamespace, cssNamespace, getRenderedCSS, isDOMNode,
+  var $, Bootstrap, Button, Code, FormControls, baseClass, baseNamespace, cssNamespace, getRenderedCSS, isDOMNode, toArray,
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
     __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
@@ -61,13 +58,23 @@
     return value;
   };
 
+  toArray = function(object) {
+    var key, _results;
+    _results = [];
+    for (key in object) {
+      if (!__hasProp.call(object, key)) continue;
+      _results.push(object[key]);
+    }
+    return _results;
+  };
+
   $ = jQuery;
 
   baseNamespace = "uk.co.stevenmeyer.bootstrap";
 
   cssNamespace = "" + baseNamespace + ".css";
 
-  baseClass = (namespace(baseNamespace)).Bootstrap = (function(_super) {
+  baseClass = Bootstrap = (function(_super) {
     __extends(Bootstrap, _super);
 
     function Bootstrap() {
@@ -85,7 +92,11 @@
 
   })($);
 
-  (namespace(cssNamespace)).Button = (function(_super) {
+  namespace(baseNamespace, {
+    Bootstrap: Bootstrap
+  });
+
+  Button = (function(_super) {
     var exclusiveClass, getText, setText;
 
     __extends(Button, _super);
@@ -94,22 +105,6 @@
 
     Button.prototype.DISABLED = "disabled";
 
-    Button.prototype.inputButtonTypes = {
-      BUTTON: "button",
-      RESET: "reset",
-      SUBMIT: "submit",
-      toArray: function() {
-        var type, _results;
-        _results = [];
-        for (type in Button.prototype.inputButtonTypes) {
-          if (type !== "toArray") {
-            _results.push(Button.prototype.inputButtonTypes[type]);
-          }
-        }
-        return _results;
-      }
-    };
-
     Button.prototype.options = {
       DANGER: "btn-danger",
       DEFAULT: "",
@@ -117,34 +112,20 @@
       LINK: "btn-link",
       PRIMARY: "btn-primary",
       SUCCESS: "btn-success",
-      WARNING: "btn-warning",
-      toArray: function() {
-        var style, _results;
-        _results = [];
-        for (style in Button.prototype.options) {
-          if (style !== "toArray") {
-            _results.push(Button.prototype.options[style]);
-          }
-        }
-        return _results;
-      }
+      WARNING: "btn-warning"
     };
 
     Button.prototype.sizes = {
       DEFAULT: "",
       EXTRASMALL: "btn-xs",
       LARGE: "btn-lg",
-      SMALL: "btn-sm",
-      toArray: function() {
-        var size, _results;
-        _results = [];
-        for (size in Button.prototype.sizes) {
-          if (size !== "toArray") {
-            _results.push(Button.prototype.sizes[size]);
-          }
-        }
-        return _results;
-      }
+      SMALL: "btn-sm"
+    };
+
+    Button.prototype.inputButtonTypes = {
+      BUTTON: "button",
+      RESET: "reset",
+      SUBMIT: "submit"
     };
 
     function Button() {
@@ -167,27 +148,71 @@
       this.addClass("btn");
     }
 
-    Button.prototype.block = function(block) {
-      if (block == null) {
-        block = true;
-      }
-      if (block === false) {
-        return this.removeClass(Button.prototype.BLOCK);
-      } else {
-        return this.addClass(Button.prototype.BLOCK);
-      }
-    };
-
     Button.prototype.danger = function() {
       return this.option(Button.prototype.options.DANGER);
+    };
+
+    Button.prototype.defaultStyle = function() {
+      return this.option();
+    };
+
+    Button.prototype.info = function() {
+      return this.option(Button.prototype.options.INFO);
+    };
+
+    Button.prototype.link = function() {
+      return this.option(Button.prototype.options.LINK);
+    };
+
+    Button.prototype.primary = function() {
+      return this.option(Button.prototype.options.PRIMARY);
+    };
+
+    Button.prototype.success = function() {
+      return this.option(Button.prototype.options.SUCCESS);
+    };
+
+    Button.prototype.warning = function() {
+      return this.option(Button.prototype.options.WARNING);
+    };
+
+    Button.prototype.option = function(emphasis) {
+      if (emphasis == null) {
+        emphasis = "";
+      }
+      return exclusiveClass.call(this, emphasis, toArray(Button.prototype.options));
     };
 
     Button.prototype.defaultSize = function() {
       return this.size(Button.prototype.sizes.DEFAULT);
     };
 
-    Button.prototype.defaultStyle = function() {
-      return this.option();
+    Button.prototype.extraSmall = function() {
+      return this.size(Button.prototype.sizes.EXTRASMALL);
+    };
+
+    Button.prototype.large = function() {
+      return this.size(Button.prototype.sizes.LARGE);
+    };
+
+    Button.prototype.small = function() {
+      return this.size(Button.prototype.sizes.SMALL);
+    };
+
+    Button.prototype.size = function() {
+      if (arguments[0] != null) {
+        return exclusiveClass.call(this, arguments[0], toArray(Button.prototype.sizes));
+      } else {
+        return this.length;
+      }
+    };
+
+    Button.prototype.block = function(block) {
+      if (block === false) {
+        return this.removeClass(Button.prototype.BLOCK);
+      } else {
+        return this.addClass(Button.prototype.BLOCK);
+      }
     };
 
     Button.prototype.disable = function() {
@@ -203,6 +228,14 @@
       });
     };
 
+    Button.prototype.text = function() {
+      if (arguments[0] != null) {
+        return setText.apply(this, arguments);
+      } else {
+        return getText.apply(this, arguments);
+      }
+    };
+
     exclusiveClass = function(style, classes) {
       if (style == null) {
         style = "";
@@ -215,14 +248,10 @@
       }
     };
 
-    Button.prototype.extraSmall = function() {
-      return this.size(Button.prototype.sizes.EXTRASMALL);
-    };
-
     getText = function() {
       var types;
       if (this.is("input")) {
-        types = Button.prototype.inputButtonTypes.toArray();
+        types = toArray(Button.prototype.inputButtonTypes);
         return this.map(function(index, DOMElement) {
           var $element, _ref;
           $element = $(DOMElement);
@@ -237,33 +266,10 @@
       }
     };
 
-    Button.prototype.info = function() {
-      return this.option(Button.prototype.options.INFO);
-    };
-
-    Button.prototype.large = function() {
-      return this.size(Button.prototype.sizes.LARGE);
-    };
-
-    Button.prototype.link = function() {
-      return this.option(Button.prototype.options.LINK);
-    };
-
-    Button.prototype.option = function(emphasis) {
-      if (emphasis == null) {
-        emphasis = "";
-      }
-      return exclusiveClass.call(this, emphasis, Button.prototype.options.toArray());
-    };
-
-    Button.prototype.primary = function() {
-      return this.option(Button.prototype.options.PRIMARY);
-    };
-
     setText = function(text) {
       var types;
       if (this.is("input")) {
-        types = Button.prototype.inputButtonTypes.toArray();
+        types = toArray(Button.prototype.inputButtonTypes);
         return this.each(function(index, DOMElement) {
           var $element, value, _ref;
           $element = $(DOMElement);
@@ -279,42 +285,16 @@
       }
     };
 
-    Button.prototype.size = function() {
-      if (arguments[0] != null) {
-        return exclusiveClass.call(this, arguments[0], Button.prototype.sizes.toArray());
-      } else {
-        return this.length;
-      }
-    };
-
-    Button.prototype.small = function() {
-      return this.size(Button.prototype.sizes.SMALL);
-    };
-
-    Button.prototype.success = function() {
-      return this.option(Button.prototype.options.SUCCESS);
-    };
-
-    Button.prototype.text = function() {
-      if (arguments[0] != null) {
-        return setText.apply(this, arguments);
-      } else {
-        return getText.apply(this, arguments);
-      }
-    };
-
-    Button.prototype.warning = function() {
-      return this.option(Button.prototype.options.WARNING);
-    };
-
     return Button;
 
   })(baseClass);
 
-  (namespace(cssNamespace)).Code = (function(_super) {
+  Code = (function(_super) {
     var addItem;
 
     __extends(Code, _super);
+
+    Code.prototype.SCROLLABLE = "pre-scrollable";
 
     function Code() {
       var args,
@@ -332,6 +312,18 @@
       };
       this;
     }
+
+    Code.prototype.append = function() {
+      var args;
+      args = Array.prototype.slice.call(arguments);
+      return addItem.call(this, "append", args);
+    };
+
+    Code.prototype.prepend = function() {
+      var args;
+      args = Array.prototype.slice.call(arguments);
+      return addItem.call(this, "prepend", args);
+    };
 
     addItem = function(op, items) {
       var arg, lastTry,
@@ -374,13 +366,11 @@
       return this;
     };
 
-    Code.prototype.append = function() {
-      var args;
-      args = Array.prototype.slice.call(arguments);
-      return addItem.call(this, "append", args);
+    Code.prototype.appendHTML = function() {
+      return $.fn.append.apply(this, arguments);
     };
 
-    Code.prototype.appendHTML = function() {
+    Code.prototype.prependHTML = function() {
       return $.fn.append.apply(this, arguments);
     };
 
@@ -414,23 +404,11 @@
       }
     };
 
-    Code.prototype.prepend = function() {
-      var args;
-      args = Array.prototype.slice.call(arguments);
-      return addItem.call(this, "prepend", args);
-    };
-
-    Code.prototype.prependHTML = function() {
-      return $.fn.append.apply(this, arguments);
-    };
-
     Code.prototype.scrollable = function(scroll) {
-      var className;
-      className = "pre-scrollable";
       if (scroll === false) {
-        this.removeClass(className);
+        this.removeClass(Code.prototype.SCROLLABLE);
       } else if (this.isBlock()) {
-        this.addClass(className);
+        this.addClass(Code.prototype.SCROLLABLE);
       }
       return this;
     };
@@ -439,7 +417,7 @@
 
   })(baseClass);
 
-  (namespace(cssNamespace)).Code.BlockCode = (function(_super) {
+  Code.BlockCode = (function(_super) {
     __extends(BlockCode, _super);
 
     function BlockCode() {
@@ -461,9 +439,9 @@
 
     return BlockCode;
 
-  })((namespace(cssNamespace)).Code);
+  })(Code);
 
-  (namespace(cssNamespace)).Code.InlineCode = (function(_super) {
+  Code.InlineCode = (function(_super) {
     __extends(InlineCode, _super);
 
     function InlineCode() {
@@ -485,6 +463,69 @@
 
     return InlineCode;
 
-  })((namespace(cssNamespace)).Code);
+  })(Code);
+
+  FormControls = (function() {
+    function FormControls() {}
+
+    FormControls.prototype.inputTypes = {
+      COLOR: "color",
+      DATE: "date",
+      DATETIME: "datetime",
+      DATETIMELOCAL: "datetime-local",
+      EMAIL: "email",
+      MONTH: "month",
+      NUMBER: "number",
+      PASSWORD: "password",
+      SEARCH: "search",
+      TEL: "tel",
+      TEXT: "text",
+      TIME: "time",
+      URL: "url",
+      WEEK: "week"
+    };
+
+    FormControls.prototype.createInput = function(type) {
+      var $element, id, ownerDocument, types;
+      types = toArray(FormControls.prototype.inputTypes);
+      if (__indexOf.call(types, type) < 0) {
+        type = FormControls.prototype.inputTypes.TEXT;
+      }
+      if (arguments.length > 1) {
+        id = null;
+        ownerDocument = null;
+        if (typeof arguments[1] === "string") {
+          id = arguments[1];
+        } else if (arguments[1] instanceof Document) {
+          ownerDocument = arguments[1];
+        }
+        if (arguments[2] && arguments[2] instanceof Document) {
+          ownerDocument = arguments[2];
+        }
+        if (ownerDocument) {
+          $element = $("<input />", ownerDocument);
+        } else {
+          $element = $("<input />");
+        }
+        if (id) {
+          $element.attr("id", id);
+        }
+        return $element.attr("type", type);
+      } else {
+        return $("<input />").attr("type", type);
+      }
+    };
+
+    return FormControls;
+
+  })();
+
+  namespace(cssNamespace, {
+    Button: Button,
+    Code: Code,
+    forms: {
+      FormControls: FormControls
+    }
+  });
 
 }).call(this);
